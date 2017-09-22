@@ -8,7 +8,7 @@ CommerceQL can be used to build a custom GraphQL backed online store, without th
 
 - Create or open an existing [graphcool-cli@beta](https://github.com/graphcool/graphcool-cli) project.
 
-  ```
+  ```bash
   graphcool init # for new projects
   graphcool module add commerceql/platform
   ```
