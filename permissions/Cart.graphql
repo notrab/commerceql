@@ -1,0 +1,3 @@
+query Cart($node_id: ID!, $user_id: ID!) {
+  someCartExists(filter: {id: $node_id, user: {id: $user_id}})
+}

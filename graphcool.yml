@@ -7,3 +7,20 @@ functions:
         src: ./code/getCartSubTotal.js
     type: resolver
     schema: ./code/getCartSubTotal.graphql
+
+permissions:
+  # TODO: Decide is Cart should be protected
+  # - operation: Cart.create
+  #   authenticated: true
+  # - operation: Cart.read
+  #   authenticated: true
+  #   query: ./permissions/Cart.graphql
+  # - operation: Cart.update
+  #   authenticated: true
+  #   query: ./permissions/Cart.graphql
+  # - operation: Cart.delete
+  #   authenticated: true
+  #   query: ./permissions/Cart.graphql
+
+rootTokens:
+  - defaultToken

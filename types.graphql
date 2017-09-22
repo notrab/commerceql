@@ -7,8 +7,19 @@ type Cart {
 
 type CartItem {
   id: ID! @isUnique
+  orderedItem: Product! @relation(name: "OrderedCartItem")
   quantity: Int @defaultValue(value: 1)
   cart: Cart @relation(name: "CartOnCartItem")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Product {
+  id: ID! @isUnique
+  name: String!
+  description: String
+  active: Boolean @defaultValue(value: true)
+  cartItems: [CartItem!]! @relation(name: "OrderedCartItem")
   createdAt: DateTime!
   updatedAt: DateTime!
 }
