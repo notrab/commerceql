@@ -1,6 +1,13 @@
 types: ./types.graphql
 
 functions:
+  addItemToCart:
+    handler:
+      code:
+        src: ./code/addItemToCart.js
+    type: resolver
+    schema: ./code/addItemToCart.graphql
+    
   getCartSubTotal:
     handler:
       code:
@@ -8,8 +15,8 @@ functions:
     type: resolver
     schema: ./code/getCartSubTotal.graphql
 
-permissions:
-  # TODO: Decide is Cart should be protected
+# TODO: Decide is Cart should be protected
+# permissions:
   # - operation: Cart.create
   #   authenticated: true
   # - operation: Cart.read

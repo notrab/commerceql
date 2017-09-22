@@ -1,0 +1,8 @@
+type AddItemToCartPayload {
+  id: ID!
+  quantity: Int!
+}
+
+extend type Mutation {
+  addItemToCart(cartId: ID!, productId: ID!, quantity: Int): AddItemToCartPayload
+}
