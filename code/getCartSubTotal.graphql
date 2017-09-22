@@ -1,0 +1,7 @@
+type CartSubTotalPayload {
+  subTotal: Int!
+}
+
+extend type Query {
+  getCartSubTotal(cartId: ID!): CartSubTotalPayload
+}

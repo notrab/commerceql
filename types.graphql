@@ -1,0 +1,14 @@
+type Cart {
+  id: ID! @isUnique
+  items: [CartItem!]! @relation(name: "CartOnCartItem")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CartItem {
+  id: ID! @isUnique
+  quantity: Int @defaultValue(value: 1)
+  cart: Cart @relation(name: "CartOnCartItem")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

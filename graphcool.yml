@@ -1,0 +1,9 @@
+types: ./types.graphql
+
+functions:
+  getCartSubTotal:
+    handler:
+      code:
+        src: ./code/getCartSubTotal.js
+    type: resolver
+    schema: ./code/getCartSubTotal.graphql
