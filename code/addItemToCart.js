@@ -4,7 +4,7 @@ const {fromEvent} = require('graphcool-lib');
 
 module.exports = event => {
   return new Promise((resolve, reject) => {
-    const {cartId, productId, quantity} = event.data;
+    const {cartId, productId, quantity = 1} = event.data;
 
     const graphcool = fromEvent(event);
     const api = graphcool.api('simple/v1');
@@ -38,7 +38,7 @@ module.exports = event => {
         `
         mutation createCartItem($cartId: ID!, $productId: ID!, $quantity: Int) {
           CartItem: createCartItem(cartId: $cartId, orderedItemId: $productId, quantity: $quantity) {
-            id
+      			id
             quantity
           }
         }
@@ -73,8 +73,7 @@ module.exports = event => {
         if (!allCartItems) {
           return createCartItem(cartId, productId, quantity);
         } else {
-          // refactor
-          return updateCartItemQuantity(allCartItems[0].id, allCartItems[0].quantity + 1);
+          return updateCartItemQuantity(allCartItems[0].id, allCartItems[0].quantity + quantity);
         }
       })
       .then(({CartItem: {id, quantity}}) => {
