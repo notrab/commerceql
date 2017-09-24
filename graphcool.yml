@@ -4,16 +4,16 @@ functions:
   addItemToCart:
     handler:
       code:
-        src: ./code/addItemToCart.js
+        src: ./src/addItemToCart.js
     type: resolver
-    schema: ./code/addItemToCart.graphql
-    
+    schema: ./src/addItemToCart.graphql
+
   getCartSubTotal:
     handler:
       code:
-        src: ./code/getCartSubTotal.js
+        src: ./src/getCartSubTotal.js
     type: resolver
-    schema: ./code/getCartSubTotal.graphql
+    schema: ./src/getCartSubTotal.graphql
 
 # TODO: Decide is Cart should be protected
 # permissions:
