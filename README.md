@@ -11,7 +11,7 @@ CommerceQL can be used to build a custom GraphQL backed online store, without th
 You're free to implement the provided functions how you like, but typically we recommend the following flow inside your applications:
 
 1. `createCart`
-2. `addItemToCart(productId: "...", cartId: "...")`
+2. `addItemToCart(productId: "...", cartId: "...", quantity: 3)`
 3. `getCart(id: "...")`
 5. `Checkout(...)`
 
