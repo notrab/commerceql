@@ -1,3 +1,5 @@
+![commerceql-banner](https://imgur.com/a/gKWxn)
+
 # CommerceQL Platform Module 🛍
 
 ⚠️ WIP
