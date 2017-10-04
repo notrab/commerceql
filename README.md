@@ -1,4 +1,4 @@
-![commerceql-banner](https://imgur.com/a/gKWxn)
+![commerceql-banner](https://i.imgur.com/XKzkoPt.png)
 
 # CommerceQL Platform Module 🛍
 
