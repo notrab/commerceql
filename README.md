@@ -19,11 +19,11 @@ You're free to implement the provided functions how you like, but typically we r
 
 ## Get Started
 
-- Create or open an existing [graphcool-cli@beta](https://github.com/graphcool/graphcool-cli) project.
+- Create or open an existing [graphcool-cli](https://github.com/graphcool) project.
 
   ```bash
   graphcool init # for new projects
-  graphcool module add commerceql/platform
+  graphcool modules add commerceql/platform
   ```
 
 ## Configuration

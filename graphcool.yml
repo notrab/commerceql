@@ -1,5 +1,22 @@
 types: ./types.graphql
 
+permissions:
+- operation: "*"
+# - operation: Cart.create
+#   authenticated: true
+# - operation: Cart.read
+#   authenticated: true
+#   query: ./permissions/Cart.graphql
+# - operation: Cart.update
+#   authenticated: true
+#   query: ./permissions/Cart.graphql
+# - operation: Cart.delete
+#   authenticated: true
+#   query: ./permissions/Cart.graphql
+
+rootTokens:
+  - defaultToken
+
 functions:
   addItemToCart:
     handler:
@@ -15,19 +32,9 @@ functions:
     type: resolver
     schema: ./src/getCartSubTotal.graphql
 
-# TODO: Decide is Cart should be protected
-# permissions:
-  # - operation: Cart.create
-  #   authenticated: true
-  # - operation: Cart.read
-  #   authenticated: true
-  #   query: ./permissions/Cart.graphql
-  # - operation: Cart.update
-  #   authenticated: true
-  #   query: ./permissions/Cart.graphql
-  # - operation: Cart.delete
-  #   authenticated: true
-  #   query: ./permissions/Cart.graphql
-
-rootTokens:
-  - defaultToken
+  Checkout:
+    handler:
+      code:
+        src: ./src/Checkout.js
+    type: resolver
+    schema: ./src/Checkout.graphql

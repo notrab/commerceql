@@ -1,0 +1,51 @@
+type CheckoutPayload {
+  id: ID!
+  cartId: ID!
+  stripeCustomerId: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  billingName: String!
+  billingLine1: String!
+  billingLine2: String
+  billingCity: String
+  billingState: String!
+  billingPostalCode: String!
+  billingCountry: String!
+  shippingName: String!
+  shippingLine1: String!
+  shippingLine2: String
+  shippingState: String!
+  shippingCity: String
+  shippingPostalCode: String!
+  shippingCountry: String!
+  shippingInstructions: String
+  orderTotal: Int!
+  createdAt: DateTime!
+}
+
+extend type Mutation {
+  Checkout(
+    cartId: ID!
+    stripeToken: String
+    stripeCustomerId: String
+    email: String!
+    firstName: String!
+    lastName: String!
+    billingName: String!
+    billingLine1: String!
+    billingLine2: String
+    billingCity: String
+    billingState: String!
+    billingPostalCode: String!
+    billingCountry: String!
+    shippingName: String!
+    shippingLine1: String!
+    shippingLine2: String
+    shippingState: String!
+    shippingCity: String
+    shippingPostalCode: String!
+    shippingCountry: String!
+    shippingInstructions: String
+  ): CheckoutPayload
+}

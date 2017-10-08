@@ -18,8 +18,67 @@ type Product {
   id: ID! @isUnique
   name: String!
   description: String
-  active: Boolean @defaultValue(value: true)
+  sku: String
+  amount: Int! @defaultValue(value: 0)
+  category: Category @relation(name: "ProductCategories")
   cartItems: [CartItem!]! @relation(name: "OrderedCartItem")
+  active: Boolean @defaultValue(value: true)
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+type Category {
+  id: ID! @isUnique
+  name: String!
+  products: [Product!]! @relation(name: "ProductCategories")
+}
+
+type Order {
+  id: ID! @isUnique
+  stripeCustomerId: String!
+  cartId: String
+  email: String!
+  billingName: String!
+  billingLine1: String!
+  billingLine2: String
+  billingCity: String
+  billingState: String!
+  billingPostalCode: String!
+  billingCountry: String!
+  shippingName: String!
+  shippingLine1: String!
+  shippingLine2: String
+  shippingCity: String
+  shippingState: String!
+  shippingPostalCode: String!
+  shippingCountry: String!
+  shippingInstructions: String
+  orderTotal: Int!
+  paymentStatus: PaymentStatus
+  fulfillmentStatus: FulfillmentStatus! @defaultValue(value: NOT_FULFILLED)
+  lineItems: [OrderItem!]! @relation(name: "OrderItems")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type OrderItem {
+  id: ID! @isUnique
+  order: Order! @relation(name: "OrderItems")
+  quantity: Int! @defaultValue(value: 1)
+  subTotal: Int! @defaultValue(value: 0)
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum FulfillmentStatus {
+  FULFILLED
+  NOT_FULFILLED
+}
+
+enum PaymentStatus {
+  DECLINED
+  AUTHORIZED
+  PAID
+  PARTIALLY_PAID
+  REFUNDED
 }
