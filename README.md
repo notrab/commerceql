@@ -37,7 +37,7 @@ When using the CommerceQL Platform module, we recommend the following flow insid
   mutation {
     getCart(id: "cj8j27lkvx8rg0130m43s1w7n") {
       id
-    	items {
+      items {
         id
         orderedItem {
           name
@@ -74,7 +74,7 @@ When using the CommerceQL Platform module, we recommend the following flow insid
       billingPostalCode: "..."
       billingCountry: "..."
       shippingName: "..."
-    	shippingLine1: "..."
+      shippingLine1: "..."
       shippingLine2: ""
       shippingCity: "..."
       shippingState: "..."
