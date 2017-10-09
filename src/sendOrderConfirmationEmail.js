@@ -18,9 +18,9 @@ module.exports = event =>
       to: node.email,
       from: `${process.env.STORE_NAME} <${process.env.STORE_EMAIL}>`,
       subject: `We've got your order!`,
-      text: `Hi ${node.firstName}. Your order has been received!`,
+      text: `Hi ${node.billingName}. Your order has been received!`,
       html: `
-        <p>${node.firstName}</p>
+        <p>${node.billingName}</p>
         <p>Just to let you know, your order has been received!</p>
       `
     }
