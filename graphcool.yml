@@ -46,7 +46,6 @@ functions:
       code:
         src: ./src/sendOrderConfirmationEmail.js
         environment:
-          MAILGUN_API_KEY: ${env:MAILGUN_API_KEY}
-          MAILGUN_DOMAIN: ${env:MAILGUN_DOMAIN}
+          SENDGRID_API_KEY: ${env:SENDGRID_API_KEY}
     type: subscription
     query: ./src/sendOrderConfirmationEmail.graphql

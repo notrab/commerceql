@@ -82,6 +82,7 @@ module.exports = event =>
       const mutation = `mutation createOrder(
         $stripeCustomerId: String!
         $cartId: String!
+        $email: String!
         $billingName: String!
         $billingLine1: String!
         $billingLine2: String
@@ -102,6 +103,7 @@ module.exports = event =>
         createOrder(
           stripeCustomerId: $stripeCustomerId
           cartId: $cartId
+          email: $email
           billingName: $billingName
           billingLine1: $billingLine1
           billingLine2: $billingLine2
