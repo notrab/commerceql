@@ -1,0 +1,13 @@
+subscription {
+  Cart(
+    filter: { mutation_in: [UPDATED], updatedFields_contains_some: ["isPaid"] }
+  ) {
+    updatedFields
+    node {
+      id
+      items {
+        id
+      }
+    }
+  }
+}

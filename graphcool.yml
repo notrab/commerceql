@@ -60,8 +60,26 @@ functions:
   sendOrderConfirmationEmail:
     handler:
       code:
-        src: ./src/sendOrderConfirmationEmail.js
+        src: ./src/sendOrderEmail.js
         environment:
           SENDGRID_API_KEY: ${env:SENDGRID_API_KEY}
     type: subscription
-    query: ./src/sendOrderConfirmationEmail.graphql
+    query: ./src/sendOrderEmail.graphql
+
+  cleanupCarts:
+    handler:
+      code:
+        src: ./src/cleanupCarts.js
+    type: subscription
+    query: ./src/cleanupCarts.graphql
+
+  sendShippingConfirmationEmail:
+    handler:
+      code:
+        src: ./src/sendShippingEmail.js
+        environment:
+          SENDGRID_API_KEY: ${env:SENDGRID_API_KEY}
+          STORE_NAME: ${env:STORE_NAME}
+          STORE_EMAIL: ${env:STORE_EMAIL}
+    type: subscription
+    query: ./src/sendShippingEmail.graphql

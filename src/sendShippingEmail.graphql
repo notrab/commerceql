@@ -1,0 +1,14 @@
+subscription {
+  Order(
+    filter: {
+      mutation_in: [UPDATED]
+      updatedFields_contains_some: ["fulfillmentStatus"]
+    }
+  ) {
+    updatedFields
+    node {
+      id
+      fulfillmentStatus
+    }
+  }
+}

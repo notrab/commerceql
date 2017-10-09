@@ -231,5 +231,9 @@ const getOrderTotal = items =>
 
 const getDescription = items =>
   items
-    .map(item => `${item.quantity}x ${item.orderedItem.name}: $${item.amount}`)
+    .map(
+      item =>
+        `${item.quantity}x ${item.orderedItem.name} @ $${item.orderedItem
+          .amount} each`
+    )
     .join(', ')
