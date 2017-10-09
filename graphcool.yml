@@ -1,18 +1,34 @@
 types: ./types.graphql
 
 permissions:
-- operation: "*"
-# - operation: Cart.create
-#   authenticated: true
-# - operation: Cart.read
-#   authenticated: true
-#   query: ./permissions/Cart.graphql
-# - operation: Cart.update
-#   authenticated: true
-#   query: ./permissions/Cart.graphql
-# - operation: Cart.delete
-#   authenticated: true
-#   query: ./permissions/Cart.graphql
+  - operation: '*'
+  # - operation: Cart.read
+  #   authenticated: false
+  # - operation: Cart.create
+  # - operation: Cart.update
+  # - operation: Cart.delete
+  #   authenticated: true
+  #   # query: ./permissions/Cart.graphql
+  #
+  # - operation: CartItem.read
+  #   authenticated: false
+  # - operation: CartItem.create
+  # - operation: CartItem.update
+  # - operation: CartItem.delete
+  #   authenticated: true
+  #   # query: ./permissions/CartItem.graphql
+  #
+  # - operation: addItemToCart
+  #   authenticated: true
+  #   # query: ./permissions/addItemToCart.graphql
+  #
+  # - operation: Order.read
+  #   authenticated: true
+  #   # query: ./permissions/Order.graphql
+  #
+  # - operation: Checkout
+  #   authenticated: false
+  #   # query: ./permissions/Checkout.graphql
 
 rootTokens:
   - defaultToken
