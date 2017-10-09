@@ -36,5 +36,17 @@ functions:
     handler:
       code:
         src: ./src/Checkout.js
+        environment:
+          STRIPE_KEY: ${env:STRIPE_KEY}
     type: resolver
     schema: ./src/Checkout.graphql
+
+  sendOrderConfirmationEmail:
+    handler:
+      code:
+        src: ./src/sendOrderConfirmationEmail.js
+        environment:
+          MAILGUN_API_KEY: ${env:MAILGUN_API_KEY}
+          MAILGUN_DOMAIN: ${env:MAILGUN_DOMAIN}
+    type: subscription
+    query: ./src/sendOrderConfirmationEmail.graphql

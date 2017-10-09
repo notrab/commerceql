@@ -96,6 +96,7 @@ When using the CommerceQL Platform module, we recommend the following flow insid
 - Create or open an existing [graphcool-cli](https://github.com/graphcool) project.
 
   ```bash
+  npm install -g graphcool@next
   graphcool init # for new projects
   graphcool modules add commerceql/platform
   ```

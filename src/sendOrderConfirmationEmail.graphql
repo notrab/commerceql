@@ -1,0 +1,9 @@
+subscription {
+  Order(filter: { mutation_in: CREATED }) {
+    node {
+      firstName
+      lastName
+      email
+    }
+  }
+}

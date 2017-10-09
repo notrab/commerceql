@@ -1,13 +1,13 @@
-'use latest';
+'use latest'
 
-const {fromEvent} = require('graphcool-lib');
+const { fromEvent } = require('graphcool-lib')
 
-module.exports = event => {
-  return new Promise((resolve, reject) => {
-    const {cartId, productId, quantity = 1} = event.data;
+module.exports = event =>
+  new Promise((resolve, reject) => {
+    const { cartId, productId, quantity = 1 } = event.data
 
-    const graphcool = fromEvent(event);
-    const api = graphcool.api('simple/v1');
+    const graphcool = fromEvent(event)
+    const api = graphcool.api('simple/v1')
 
     const checkCartItemExists = (cartId, productId) => {
       return api.request(
@@ -30,8 +30,8 @@ module.exports = event => {
           cartId,
           productId
         }
-      );
-    };
+      )
+    }
 
     const createCartItem = (cartId, productId, quantity) => {
       return api.request(
@@ -48,8 +48,8 @@ module.exports = event => {
           productId,
           quantity
         }
-      );
-    };
+      )
+    }
 
     const updateCartItemQuantity = (id, quantity) => {
       return api.request(
@@ -65,25 +65,27 @@ module.exports = event => {
           id,
           quantity
         }
-      );
-    };
+      )
+    }
 
     return checkCartItemExists(cartId, productId)
-      .then(({allCartItems}) => {
+      .then(({ allCartItems }) => {
         if (!allCartItems) {
-          return createCartItem(cartId, productId, quantity);
+          return createCartItem(cartId, productId, quantity)
         } else {
-          return updateCartItemQuantity(allCartItems[0].id, allCartItems[0].quantity + quantity);
+          return updateCartItemQuantity(
+            allCartItems[0].id,
+            allCartItems[0].quantity + quantity
+          )
         }
       })
-      .then(({CartItem: {id, quantity}}) => {
+      .then(({ CartItem: { id, quantity } }) => {
         resolve({
           data: {
             id,
             quantity
           }
-        });
+        })
       })
-      .catch(error => resolve({error: error.message}));
-  });
-};
+      .catch(error => resolve({ error: error.message }))
+  })

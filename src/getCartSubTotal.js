@@ -1,13 +1,13 @@
-'use latest';
+'use latest'
 
-const {fromEvent} = require('graphcool-lib');
+const { fromEvent } = require('graphcool-lib')
 
-module.exports = function(event) {
-  return new Promise((resolve, reject) => {
-    const cartId = event.data.cartId;
+module.exports = event =>
+  new Promise((resolve, reject) => {
+    const cartId = event.data.cartId
 
-    const graphcool = fromEvent(event);
-    const api = graphcool.api('simple/v1');
+    const graphcool = fromEvent(event)
+    const api = graphcool.api('simple/v1')
 
     const query = `
       query getCart($cartId: ID!) {
@@ -22,24 +22,27 @@ module.exports = function(event) {
           }
         }
       }
-    `;
+    `
 
     const variables = {
       cartId
-    };
+    }
 
     const calculateSubTotal = items => {
-      return items.reduce((sum, item) => sum + item.orderedItem.amount * item.quantity, 0);
-    };
+      return items.reduce(
+        (sum, item) => sum + item.orderedItem.amount * item.quantity,
+        0
+      )
+    }
 
     return api
       .request(query, variables)
-      .then(({Cart}) => {
+      .then(({ Cart }) => {
         if (!Cart) {
-          throw new Error(`Invalid cartId ${cartId}`);
+          throw new Error(`Invalid cartId ${cartId}`)
         }
 
-        return Cart.items;
+        return Cart.items
       })
       .then(items => calculateSubTotal(items))
       .then(subTotal => {
@@ -47,8 +50,7 @@ module.exports = function(event) {
           data: {
             subTotal
           }
-        });
+        })
       })
-      .catch(error => resolve({error: error.message}));
-  });
-};
+      .catch(error => resolve({ error: error.message }))
+  })
