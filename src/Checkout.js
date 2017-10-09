@@ -5,14 +5,14 @@ const { fromEvent } = require('graphcool-lib')
 
 module.exports = event =>
   new Promise((resolve, reject) => {
-    let { cartId } = event.data
+    let { BasketId } = event.data
 
     const graphcool = fromEvent(event)
     const api = graphcool.api('simple/v1')
 
-    const getCart = cartId => {
-      const query = `query getCartById($cartId: ID!) {
-        Cart(id: $cartId) {
+    const getBasket = BasketId => {
+      const query = `query getBasketById($BasketId: ID!) {
+        Basket(id: $BasketId) {
           id
           items {
             id
@@ -28,7 +28,7 @@ module.exports = event =>
       }`
 
       const variables = {
-        cartId
+        BasketId
       }
 
       return api.request(query, variables)
@@ -59,29 +59,54 @@ module.exports = event =>
       })
     }
 
+    // clean up
+    // sanitize
+    // pass in data object as arg instead of relying on event.data
     const chargeStripeCustomer = (amount, description, stripeCustomerId) =>
       new Promise((resolve, reject) => {
-        return stripe.charges.create(
-          {
-            amount,
-            description,
-            currency: 'gbp',
-            customer: stripeCustomerId
+        let charge = {
+          amount,
+          description,
+          currency: event.data.currency || 'gbp',
+          customer: stripeCustomerId,
+          receipt_email: event.data.email,
+          shipping: {
+            address: {
+              city: event.data.shippingCity,
+              country: event.data.shippingCountry,
+              line1: event.data.shippingLine1,
+              line2: event.data.shippingLine2,
+              postal_code: event.data.shippingPostalCode,
+              state: event.data.shippingState
+            },
+            name: `${event.data.firstName} ${event.data.lastName}`
           },
-          (err, charge) => {
-            if (err) {
-              reject(err)
-            } else {
-              resolve(stripeCustomerId)
-            }
+          metadata: {
+            shipping_instructions: event.data.shippingInstructions
           }
-        )
+        }
+
+        if (event.data.phone) {
+          let charge = Object.assign({}, charge, {
+            receipt_phone: event.data.phone
+          })
+        }
+
+        return stripe.charges.create(charge, (err, charge) => {
+          if (err) {
+            // handle declined transaction
+            // update Basket as payment failed
+            reject(err)
+          } else {
+            resolve(stripeCustomerId)
+          }
+        })
       })
 
-    const convertCartToOrder = variables => {
+    const convertBasketToOrder = variables => {
       const mutation = `mutation createOrder(
         $stripeCustomerId: String!
-        $cartId: String!
+        $BasketId: String!
         $email: String!
         $billingName: String!
         $billingLine1: String!
@@ -102,7 +127,7 @@ module.exports = event =>
       ) {
         createOrder(
           stripeCustomerId: $stripeCustomerId
-          cartId: $cartId
+          BasketId: $BasketId
           email: $email
           billingName: $billingName
           billingLine1: $billingLine1
@@ -123,7 +148,7 @@ module.exports = event =>
         ) {
           id
           stripeCustomerId
-          cartId
+          BasketId
           email
           billingName
           billingLine1
@@ -147,13 +172,13 @@ module.exports = event =>
       return api.request(mutation, variables)
     }
 
-    return getCart(cartId)
-      .then(({ Cart }) => {
-        if (!Cart) {
-          throw new Error(`Invalid cartId ${cartId}`)
+    return getBasket(BasketId)
+      .then(({ Basket }) => {
+        if (!Basket) {
+          throw new Error(`Invalid BasketId ${BasketId}`)
         }
 
-        const { items } = Cart
+        const { items } = Basket
 
         const { data } = event
         const {
@@ -179,7 +204,7 @@ module.exports = event =>
             chargeStripeCustomer(orderTotal, description, stripeCustomerId)
           )
           .then(stripeCustomerId =>
-            convertCartToOrder(
+            convertBasketToOrder(
               Object.assign({}, data, {
                 stripeCustomerId,
                 orderTotal

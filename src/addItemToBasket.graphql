@@ -1,0 +1,12 @@
+type AddItemToBasketPayload {
+  id: ID!
+  quantity: Int!
+}
+
+extend type Mutation {
+  addItemToBasket(
+    BasketId: ID!
+    productId: ID!
+    quantity: Int
+  ): AddItemToBasketPayload
+}

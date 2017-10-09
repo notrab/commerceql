@@ -14,28 +14,28 @@ You're free to implement the provided functions how you like. A CRUD API comes f
 
 When using the CommerceQL Platform module, we recommend the following flow inside your applications:
 
-### 1. `createCart`
+### 1. `createBasket`
   ```graphql
   mutation {
-    createCart {
+    createBasket {
       id
     }
   }
   ```
 
-### 2. `addItemToCart(productId: ID!, cartId: ID!, quantity: Int)`
+### 2. `addItemToBasket(productId: ID!, BasketId: ID!, quantity: Int)`
   ```graphql
   mutation {
-    addItemToCart(productId: "cj8j26cweq8wb0166lp32ujz4", cartId: "cj8j27lkvx8rg0130m43s1w7n", quantity: 3) {
+    addItemToBasket(productId: "cj8j26cweq8wb0166lp32ujz4", BasketId: "cj8j27lkvx8rg0130m43s1w7n", quantity: 3) {
       id
     }
   }
   ```
 
-### 3. `getCart(id: ID!)`
+### 3. `getBasket(id: ID!)`
   ```graphql
   mutation {
-    getCart(id: "cj8j27lkvx8rg0130m43s1w7n") {
+    getBasket(id: "cj8j27lkvx8rg0130m43s1w7n") {
       id
       items {
         id
@@ -56,7 +56,7 @@ When using the CommerceQL Platform module, we recommend the following flow insid
   mutation {
     Checkout(
       stripeToken: "tok_visa_debit"
-      cartId: "cj8j27lkvx8rg0130m43s1w7n"
+      BasketId: "cj8j27lkvx8rg0130m43s1w7n"
       firstName: "..."
       lastName: "..."
       email: "..."

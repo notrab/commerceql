@@ -2,25 +2,25 @@ types: ./types.graphql
 
 permissions:
   - operation: '*'
-  # - operation: Cart.read
+  # - operation: Basket.read
   #   authenticated: false
-  # - operation: Cart.create
-  # - operation: Cart.update
-  # - operation: Cart.delete
+  # - operation: Basket.create
+  # - operation: Basket.update
+  # - operation: Basket.delete
   #   authenticated: true
-  #   # query: ./permissions/Cart.graphql
+  #   # query: ./permissions/Basket.graphql
   #
-  # - operation: CartItem.read
+  # - operation: BasketItem.read
   #   authenticated: false
-  # - operation: CartItem.create
-  # - operation: CartItem.update
-  # - operation: CartItem.delete
+  # - operation: BasketItem.create
+  # - operation: BasketItem.update
+  # - operation: BasketItem.delete
   #   authenticated: true
-  #   # query: ./permissions/CartItem.graphql
+  #   # query: ./permissions/BasketItem.graphql
   #
-  # - operation: addItemToCart
+  # - operation: addItemToBasket
   #   authenticated: true
-  #   # query: ./permissions/addItemToCart.graphql
+  #   # query: ./permissions/addItemToBasket.graphql
   #
   # - operation: Order.read
   #   authenticated: true
@@ -34,19 +34,19 @@ rootTokens:
   - defaultToken
 
 functions:
-  addItemToCart:
+  addItemToBasket:
     handler:
       code:
-        src: ./src/addItemToCart.js
+        src: ./src/addItemToBasket.js
     type: resolver
-    schema: ./src/addItemToCart.graphql
+    schema: ./src/addItemToBasket.graphql
 
-  getCartSubTotal:
+  getBasketSubTotal:
     handler:
       code:
-        src: ./src/getCartSubTotal.js
+        src: ./src/getBasketSubTotal.js
     type: resolver
-    schema: ./src/getCartSubTotal.graphql
+    schema: ./src/getBasketSubTotal.graphql
 
   Checkout:
     handler:

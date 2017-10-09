@@ -4,14 +4,14 @@ const { fromEvent } = require('graphcool-lib')
 
 module.exports = event =>
   new Promise((resolve, reject) => {
-    const cartId = event.data.cartId
+    const BasketId = event.data.BasketId
 
     const graphcool = fromEvent(event)
     const api = graphcool.api('simple/v1')
 
     const query = `
-      query getCart($cartId: ID!) {
-        Cart(id: $cartId) {
+      query getBasket($BasketId: ID!) {
+        Basket(id: $BasketId) {
           id
           items {
             id
@@ -25,7 +25,7 @@ module.exports = event =>
     `
 
     const variables = {
-      cartId
+      BasketId
     }
 
     const calculateSubTotal = items => {
@@ -37,12 +37,12 @@ module.exports = event =>
 
     return api
       .request(query, variables)
-      .then(({ Cart }) => {
-        if (!Cart) {
-          throw new Error(`Invalid cartId ${cartId}`)
+      .then(({ Basket }) => {
+        if (!Basket) {
+          throw new Error(`Invalid BasketId ${BasketId}`)
         }
 
-        return Cart.items
+        return Basket.items
       })
       .then(items => calculateSubTotal(items))
       .then(subTotal => {

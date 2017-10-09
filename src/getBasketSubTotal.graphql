@@ -1,0 +1,7 @@
+type BasketSubTotalPayload {
+  subTotal: Int!
+}
+
+extend type Query {
+  getBasketSubTotal(BasketId: ID!): BasketSubTotalPayload
+}

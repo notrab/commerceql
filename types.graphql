@@ -1,15 +1,15 @@
-type Cart {
+type Basket {
   id: ID! @isUnique
-  items: [CartItem!]! @relation(name: "CartOnCartItem")
+  items: [BasketItem!]! @relation(name: "BasketOnBasketItem")
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type CartItem {
+type BasketItem {
   id: ID! @isUnique
-  orderedItem: Product! @relation(name: "OrderedCartItem")
+  orderedItem: Product! @relation(name: "OrderedBasketItem")
   quantity: Int @defaultValue(value: 1)
-  cart: Cart @relation(name: "CartOnCartItem")
+  Basket: Basket @relation(name: "BasketOnBasketItem")
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -21,7 +21,7 @@ type Product {
   sku: String
   amount: Int! @defaultValue(value: 0)
   category: Category @relation(name: "ProductCategories")
-  cartItems: [CartItem!]! @relation(name: "OrderedCartItem")
+  BasketItems: [BasketItem!]! @relation(name: "OrderedBasketItem")
   active: Boolean @defaultValue(value: true)
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -36,7 +36,7 @@ type Category {
 type Order {
   id: ID! @isUnique
   stripeCustomerId: String!
-  cartId: String
+  BasketId: String
   email: String!
   billingName: String!
   billingLine1: String!
@@ -54,7 +54,6 @@ type Order {
   shippingCountry: String!
   shippingInstructions: String
   orderTotal: Int!
-  paymentStatus: PaymentStatus
   fulfillmentStatus: FulfillmentStatus! @defaultValue(value: NOT_FULFILLED)
   lineItems: [OrderItem!]! @relation(name: "OrderItems")
   createdAt: DateTime!
@@ -73,12 +72,4 @@ type OrderItem {
 enum FulfillmentStatus {
   FULFILLED
   NOT_FULFILLED
-}
-
-enum PaymentStatus {
-  DECLINED
-  AUTHORIZED
-  PAID
-  PARTIALLY_PAID
-  REFUNDED
 }
