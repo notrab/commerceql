@@ -1,39 +1,40 @@
-type Basket {
-  id: ID! @isUnique
-  items: [BasketItem!]! @relation(name: "BasketOnBasketItem")
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type BasketItem {
-  id: ID! @isUnique
-  orderedItem: Product! @relation(name: "OrderedBasketItem")
-  quantity: Int @defaultValue(value: 1)
-  Basket: Basket @relation(name: "BasketOnBasketItem")
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type Product {
+type Product @model {
   id: ID! @isUnique
   name: String!
   description: String
-  sku: String
-  amount: Int! @defaultValue(value: 0)
-  category: Category @relation(name: "ProductCategories")
+  sku: String @isUnique
+  amount: Int @defaultValue(value: 0)
+  category: Category @relation(name: "CategoryProducts")
+  attributes: JSON
   BasketItems: [BasketItem!]! @relation(name: "OrderedBasketItem")
   active: Boolean @defaultValue(value: true)
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type Category {
+type Category @model {
   id: ID! @isUnique
   name: String!
-  products: [Product!]! @relation(name: "ProductCategories")
+  products: [Product!]! @relation(name: "CategoryProducts")
 }
 
-type Order {
+type Basket @model {
+  id: ID! @isUnique
+  items: [BasketItem!]! @relation(name: "BasketItems")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BasketItem @model {
+  id: ID! @isUnique
+  orderedItem: Product! @relation(name: "OrderedBasketItem")
+  quantity: Int @defaultValue(value: 1)
+  Basket: Basket @relation(name: "BasketItems")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Order @model {
   id: ID! @isUnique
   stripeCustomerId: String!
   BasketId: String
@@ -60,7 +61,7 @@ type Order {
   updatedAt: DateTime!
 }
 
-type OrderItem {
+type OrderItem @model {
   id: ID! @isUnique
   order: Order! @relation(name: "OrderItems")
   quantity: Int! @defaultValue(value: 1)

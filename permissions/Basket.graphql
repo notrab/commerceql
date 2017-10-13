@@ -1,3 +1,0 @@
-query Basket($node_id: ID!, $user_id: ID!) {
-  someBasketExists(filter: {id: $node_id, user: {id: $user_id}})
-}
