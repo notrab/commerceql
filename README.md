@@ -38,7 +38,7 @@ You can extend the CommerceQL platform by adding additional functions, types and
 
 ## Deploy
 
-Once you're finished integrating CommerceQL with any additional functionality, you can deploy to Graphcool in one command!
+Once you're finished integrating CommerceQL with any additional functionality, it's time to deploy.
 
 You will need to have the **environment variables** set during each deployment.
 
@@ -54,13 +54,13 @@ CommerceQL ships with a CRUD API out of the box, so you're free to perform mutat
 
 When using the CommerceQL Platform template, we recommend the following flow inside your applications:
 
-- #### `addItemToBasket(productId: ID!, BasketId: ID, quantity: Int)`
+- #### `addItemToBasket(productId: ID!, basketId: ID, quantity: Int)`
 
-  This mutation will add a product to the `Basket` as a `BasketItem`. If you do not provide a `BasketId`, one will be assigned in the response. You can use this to add additional `BasketItem`'s.
+  This mutation will add a product to the `Basket` as a `BasketItem`. If you do not provide a `basketId`, one will be assigned in the response. You can use this to add additional `BasketItem`'s.
 
 - #### `getBasket(id: ID)`
 
-  This query will provide you with details about the `Basket`, including `id`, `subTotal` and `items`. If you don't have a `BasketId`, one will be assigned in the response.
+  This query will provide you with details about the `Basket`, including `id`, `subTotal` and `items`. If you don't have a `basketId`, one will be assigned in the response.
 
 - #### `Checkout(...)`
 
@@ -78,10 +78,10 @@ _Will clean this up later._
   }
   ```
 
-### 2. `addItemToBasket(productId: ID!, BasketId: ID!, quantity: Int)`
+### 2. `addItemToBasket(productId: ID!, basketId: ID!, quantity: Int)`
   ```graphql
   mutation {
-    addItemToBasket(productId: "cj8j26cweq8wb0166lp32ujz4", BasketId: "cj8j27lkvx8rg0130m43s1w7n", quantity: 3) {
+    addItemToBasket(productId: "cj8j26cweq8wb0166lp32ujz4", basketId: "cj8j27lkvx8rg0130m43s1w7n", quantity: 3) {
       id
     }
   }
@@ -111,7 +111,7 @@ _Will clean this up later._
   mutation {
     Checkout(
       stripeToken: "tok_visa_debit"
-      BasketId: "cj8j27lkvx8rg0130m43s1w7n"
+      basketId: "cj8j27lkvx8rg0130m43s1w7n"
       firstName: "..."
       lastName: "..."
       email: "..."

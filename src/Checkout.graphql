@@ -1,6 +1,6 @@
 type CheckoutPayload {
   id: ID!
-  BasketId: ID!
+  basketId: ID!
   stripeCustomerId: String!
   email: String!
   firstName: String!
@@ -27,7 +27,7 @@ type CheckoutPayload {
 
 extend type Mutation {
   Checkout(
-    BasketId: ID!
+    basketId: ID!
     stripeToken: String
     stripeCustomerId: String
     email: String!

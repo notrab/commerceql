@@ -3,5 +3,5 @@ type BasketSubTotalPayload {
 }
 
 extend type Query {
-  getBasketSubTotal(BasketId: ID!): BasketSubTotalPayload
+  getBasketSubTotal(basketId: ID!): BasketSubTotalPayload
 }

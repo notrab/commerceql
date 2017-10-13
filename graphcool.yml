@@ -1,7 +1,22 @@
 types: ./types.graphql
 
 permissions:
-  - operation: '*'
+  - operation: Product.read
+    authenticated: false
+  - operation: Product.create
+  - operation: Product.update
+  - operation: Product.delete
+    authenticated: true
+    # query: ./permissions/Product.graphql
+
+  - operation: Category.read
+    authenticated: false
+  - operation: Category.create
+  - operation: Category.update
+  - operation: Category.delete
+    authenticated: true
+    # query: ./permissions/Category.graphql
+
   # - operation: Basket.read
   #   authenticated: false
   # - operation: Basket.create
@@ -66,12 +81,12 @@ functions:
     type: subscription
     query: ./src/sendOrderEmail.graphql
 
-  cleanupCarts:
-    handler:
-      code:
-        src: ./src/cleanupCarts.js
-    type: subscription
-    query: ./src/cleanupCarts.graphql
+  # cleanupCarts:
+  #   handler:
+  #     code:
+  #       src: ./src/cleanupCarts.js
+  #   type: subscription
+  #   query: ./src/cleanupCarts.graphql
 
   sendShippingConfirmationEmail:
     handler:

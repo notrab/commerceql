@@ -5,7 +5,7 @@ type AddItemToBasketPayload {
 
 extend type Mutation {
   addItemToBasket(
-    BasketId: ID!
+    basketId: ID!
     productId: ID!
     quantity: Int
   ): AddItemToBasketPayload

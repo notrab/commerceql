@@ -1,18 +1,18 @@
 'use latest'
 
 const stripe = require('stripe')(process.env.STRIPE_KEY)
-const { fromEvent } = require('graphcool-lib')
+const {fromEvent} = require('graphcool-lib')
 
 module.exports = event =>
   new Promise((resolve, reject) => {
-    let { BasketId } = event.data
+    let {basketId} = event.data
 
     const graphcool = fromEvent(event)
     const api = graphcool.api('simple/v1')
 
-    const getBasket = BasketId => {
-      const query = `query getBasketById($BasketId: ID!) {
-        Basket(id: $BasketId) {
+    const getBasket = basketId => {
+      const query = `query getBasketById($basketId: ID!) {
+        Basket(id: $basketId) {
           id
           items {
             id
@@ -28,7 +28,7 @@ module.exports = event =>
       }`
 
       const variables = {
-        BasketId
+        basketId
       }
 
       return api.request(query, variables)
@@ -39,7 +39,7 @@ module.exports = event =>
         return Promise.resolve(user.stripeCustomerId)
       }
 
-      const { email, firstName, lastName } = user
+      const {email, firstName, lastName} = user
 
       return new Promise((resolve, reject) => {
         stripe.customers.create(
@@ -106,7 +106,7 @@ module.exports = event =>
     const convertBasketToOrder = variables => {
       const mutation = `mutation createOrder(
         $stripeCustomerId: String!
-        $BasketId: String!
+        $basketId: String!
         $email: String!
         $billingName: String!
         $billingLine1: String!
@@ -127,7 +127,7 @@ module.exports = event =>
       ) {
         createOrder(
           stripeCustomerId: $stripeCustomerId
-          BasketId: $BasketId
+          basketId: $basketId
           email: $email
           billingName: $billingName
           billingLine1: $billingLine1
@@ -148,7 +148,7 @@ module.exports = event =>
         ) {
           id
           stripeCustomerId
-          BasketId
+          basketId
           email
           billingName
           billingLine1
@@ -172,27 +172,21 @@ module.exports = event =>
       return api.request(mutation, variables)
     }
 
-    return getBasket(BasketId)
-      .then(({ Basket }) => {
+    return getBasket(basketId)
+      .then(({Basket}) => {
         if (!Basket) {
-          throw new Error(`Invalid BasketId ${BasketId}`)
+          throw new Error(`Invalid basketId ${basketId}`)
         }
 
-        const { items } = Basket
+        const {items} = Basket
 
-        const { data } = event
-        const {
-          stripeToken,
-          firstName,
-          lastName,
-          email,
-          stripeCustomerId
-        } = data
+        const {data} = event
+        const {stripeToken, firstName, lastName, email, stripeCustomerId} = data
 
         // cleanup
         const user = !!stripeCustomerId
-          ? { firstName, lastName, email }
-          : { firstName, lastName, email, stripeCustomerId }
+          ? {firstName, lastName, email}
+          : {firstName, lastName, email, stripeCustomerId}
 
         // cleanup
         const orderTotal = getOrderTotal(items)
@@ -211,7 +205,7 @@ module.exports = event =>
               })
             )
           )
-          .then(({ createOrder }) => {
+          .then(({createOrder}) => {
             return resolve(
               Object.assign(
                 {},
@@ -223,7 +217,7 @@ module.exports = event =>
             )
           })
       })
-      .catch(error => resolve({ error: error.message }))
+      .catch(error => resolve({error: error.message}))
   })
 
 const getOrderTotal = items =>
