@@ -1,10 +1,8 @@
-![commerceql-banner](https://i.imgur.com/XKzkoPt.png)
+![commerceql-banner](https://i.imgur.com/dLiO6Wo.png)
 
-<h1 align="center">CommerceQL Platform 🛍</h1>
+[Website](https://commerceql.com) • [Demo Store](https://demo.commerceql.com) • [Watch the video demo](https://commerceql.com/#video)
 
-<p align="center">[Website](https://commerceql.com) • [Demo Store](https://demo.commerceql.com) • [Watch the video demo](https://commerceql.com/#video)</p>
-
-<p align="center">CommerceQL is a minimalist serverless eCommerce template, designed to run on [Graphcool](https://graph.cool).</p>
+CommerceQL is a minimalist serverless eCommerce template, designed to run on [Graphcool](https://graph.cool).
 
 ## Contents
 
