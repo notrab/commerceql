@@ -2,15 +2,27 @@
 
 # CommerceQL Platform 🛍
 
+[Website](https://commerceql.com) • [Demo Store](https://demo.commerceql.com) • [Video tutorial](https://commerceql.com/#video)
+
 CommerceQL is a minimalist serverless eCommerce template, designed to run on [Graphcool](https://graph.cool).
 
 CommerceQL can be used to build a custom GraphQL backed online store, without the limitations of hosted solutions.
 
 **⚠️ This project is a work in progress**
 
-## Get Started
+## Contents
 
-- Create or add to an existing [graphcool-cli](https://github.com/graphcool/graphcool) service.
+* [Setup](#setup)
+* [Configure](#configure)
+* [Integrate](#integrate)
+* [Deploy](#deploy)
+* [Typical Application Flow](#typical-application-flow)
+
+## <a name="setup"></a>Setup
+
+CommerceQL is designed to be used with the [Graphcool Framework](https://github.com/graphcool/graphcool).
+
+You will need to be running the latest version of the Graphcool CLI to get started with CommerceQL.
 
   ```bash
   npm install -g graphcool@next
@@ -19,9 +31,9 @@ CommerceQL can be used to build a custom GraphQL backed online store, without th
   graphcool add-template commerceql/commerceql
   ```
 
-## Configure
+## <a name="configure"></a>Configure
 
-Uncomment lines in `graphcool.yml` and `types.graphql` to enable the platform.
+Once setup, you will need to uncomment lines in `graphcool.yml` and `types.graphql` to enable the platform inside your Graphcool service.
 
 The following **environment variables** are required:
 
@@ -30,13 +42,13 @@ The following **environment variables** are required:
 
 _You can easily configure these by using a `.envrc` file and [direnv](https://direnv.net)._
 
-## Integrate
+## <a name="integrate"></a>Integrate
 
 _**This part is down to you.**_
 
 You can extend the CommerceQL platform by adding additional functions, types and permissions, or you can use it "as is" and start selling 💰.
 
-## Deploy
+## <a name="deploy"></a>Deploy
 
 Once you're finished integrating CommerceQL with any additional functionality, it's time to deploy.
 
@@ -46,7 +58,9 @@ You will need to have the **environment variables** set during each deployment.
   graphcool deploy
   ```
 
-## Typical Application Flow
+You can deploy locally, to your own server or use Graphcool to host your service/database. See the [Graphcool CLI](https://github.com/graphcool/graphcool#deployment) for more details.
+
+## <a name="typical-application-flow"></a>Typical Application Flow
 
 CommerceQL provides a basic `Product`, `Basket`, `Order` & `Checkout` API, leaving the rest up to you. Every store is different and you shouldn't be forced to build your store around a complicated set of constraints.
 
