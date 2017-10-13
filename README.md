@@ -1,14 +1,10 @@
 ![commerceql-banner](https://i.imgur.com/XKzkoPt.png)
 
-# CommerceQL Platform 🛍
+<h1 align="center">CommerceQL Platform 🛍</h1>
 
-[Website](https://commerceql.com) • [Demo Store](https://demo.commerceql.com) • [Video tutorial](https://commerceql.com/#video)
+<p align="center">[Website](https://commerceql.com) • [Demo Store](https://demo.commerceql.com) • [Watch the video demo](https://commerceql.com/#video)</p>
 
-CommerceQL is a minimalist serverless eCommerce template, designed to run on [Graphcool](https://graph.cool).
-
-CommerceQL can be used to build a custom GraphQL backed online store, without the limitations of hosted solutions.
-
-**⚠️ This project is a work in progress**
+<p align="center">CommerceQL is a minimalist serverless eCommerce template, designed to run on [Graphcool](https://graph.cool).</p>
 
 ## Contents
 
@@ -38,13 +34,22 @@ Once setup, you will need to uncomment lines in `graphcool.yml` and `types.graph
 The following **environment variables** are required:
 
 * `STRIPE_KEY`: Your [Stripe](https://stripe.com) key
-* `SENDGRID_API_KEY`: Your [SendGrid](https://sendgrid.com) API key.
+* `SENDGRID_API_KEY`: Your [SendGrid](https://sendgrid.com) API key
+* `STORE_NAME`: The name of your store, used for system emails
+* `STORE_EMAIL`: The main email where people can reach you, used for system emails
 
 _You can easily configure these by using a `.envrc` file and [direnv](https://direnv.net)._
 
+```bash
+export STRIPE_KEY=
+export SENDGRID_API_KEY=
+export STORE_NAME=
+export STORE_EMAIL=
+```
+
 ## <a name="integrate"></a>Integrate
 
-_**This part is down to you.**_
+CommerceQL can be used to build a custom GraphQL backed online store, without the limitations of hosted solutions.
 
 You can extend the CommerceQL platform by adding additional functions, types and permissions, or you can use it "as is" and start selling 💰.
 
