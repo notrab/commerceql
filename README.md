@@ -1,4 +1,4 @@
-<img align="center" src="https://i.imgur.com/MqJmOQ5.png" alt="CommerceQL" title="Serverless GraphQL eCommerce platform" />
+<p align="center"><a href="https://www.commerceql.com"><img src="https://i.imgur.com/ApkehHG.png" title="Serverless GraphQL eCommerce platform" alt="CommerceQL" width="381"></a></p>
 
 [Website](https://commerceql.com) • [Demo Store](https://demo.commerceql.com) • [Watch the video demo](https://commerceql.com/#video)
 
