@@ -1,10 +1,10 @@
 'use latest'
 
-const { fromEvent } = require('graphcool-lib')
+const {fromEvent} = require('graphcool-lib')
 
 module.exports = event =>
   new Promise((resolve, reject) => {
-    const { basketId, productId, quantity = 1 } = event.data
+    const {basketId, productId, quantity = 1} = event.data
 
     const graphcool = fromEvent(event)
     const api = graphcool.api('simple/v1')
@@ -13,11 +13,11 @@ module.exports = event =>
       return api.request(
         `
         query isItemInBasket($basketId:ID!, $productId:ID!) {
-          allBasketItems(filter:{
-            Basket:{
+          allBasketItems(filter: {
+            basket: {
               id: $basketId
             },
-            orderedItem:{
+            orderedItem: {
               id: $productId
             }
           }) {
@@ -69,17 +69,24 @@ module.exports = event =>
     }
 
     return checkBasketItemExists(basketId, productId)
-      .then(({ allBasketItems }) => {
-        if (!allBasketItems) {
-          return createBasketItem(basketId, productId, quantity)
-        } else {
-          return updateBasketItemQuantity(
-            allBasketItems[0].id,
-            allBasketItems[0].quantity + quantity
-          )
-        }
+      .then(({allBasketItems}) => {
+        // if (!allBasketItems) {
+        return createBasketItem(basketId, productId, quantity)
+        // } else {
+        //   return updateBasketItemQuantity(
+        //     allBasketItems[0].id,
+        //     allBasketItems[0].quantity + quantity
+        //   )
+        // }
       })
-      .then(({ BasketItem: { id, quantity } }) => {
+      .then(data => {
+        console.log(data)
+
+        // const {BasketItem: {id, quantity}} = data
+
+        const id = 'abc'
+        const quantity = 1
+
         resolve({
           data: {
             id,
@@ -87,5 +94,5 @@ module.exports = event =>
           }
         })
       })
-      .catch(error => resolve({ error: error.message }))
+      .catch(error => resolve({error: error.message}))
   })

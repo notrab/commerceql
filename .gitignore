@@ -4,3 +4,5 @@
 # misc
 .graphcoolrc
 .envrc
+/build
+build.zip

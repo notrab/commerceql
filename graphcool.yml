@@ -1,11 +1,30 @@
 types: ./types.graphql
 
 permissions:
+  - operation: Image.create
+  - operation: ImageOnFile.*
+  - operation: ProductImage.*
+  - operation: Basket.create
+  - operation: Basket.read
+  - operation: Basket.update
+  - operation: BasketItem.create
+  - operation: BasketItem.read
+  - operation: BasketItem.update
+    authenticated: false
+
   - operation: Product.read
     authenticated: false
   - operation: Product.create
   - operation: Product.update
   - operation: Product.delete
+    authenticated: true
+    # query: ./permissions/Product.graphql
+
+  - operation: Image.read
+    authenticated: false
+  - operation: Image.create
+  - operation: Image.update
+  - operation: Image.delete
     authenticated: true
     # query: ./permissions/Product.graphql
 
@@ -17,30 +36,22 @@ permissions:
     authenticated: true
     # query: ./permissions/Category.graphql
 
-  # - operation: Basket.read
-  #   authenticated: false
-  # - operation: Basket.create
-  # - operation: Basket.update
-  # - operation: Basket.delete
-  #   authenticated: true
-  #   # query: ./permissions/Basket.graphql
-  #
-  # - operation: BasketItem.read
-  #   authenticated: false
-  # - operation: BasketItem.create
-  # - operation: BasketItem.update
-  # - operation: BasketItem.delete
-  #   authenticated: true
-  #   # query: ./permissions/BasketItem.graphql
-  #
-  # - operation: addItemToBasket
-  #   authenticated: true
-  #   # query: ./permissions/addItemToBasket.graphql
-  #
-  # - operation: Order.read
-  #   authenticated: true
-  #   # query: ./permissions/Order.graphql
-  #
+  - operation: File.read
+    authenticated: false
+  - operation: File.create
+  - operation: File.update
+  - operation: File.delete
+    authenticated: true
+    # query: ./permissions/Product.graphql
+
+  - operation: Order.read
+  - operation: Order.update
+    authenticated: true
+    # query: ./permissions/Order.graphql
+
+  - operation: OrderItem.read
+    authenticated: true
+
   # - operation: Checkout
   #   authenticated: false
   #   # query: ./permissions/Checkout.graphql

@@ -1,0 +1,13 @@
+{
+  "name": "platform",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/CommerceQL/commerceql.git",
+  "author": "Jamie Barton <hi_jamie@me.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@sendgrid/mail": "^6.1.4",
+    "graphcool-lib": "^0.0.3",
+    "stripe": "^5.1.1"
+  }
+}
