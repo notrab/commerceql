@@ -1,13 +1,11 @@
-'use latest'
-
-const {fromEvent} = require('graphcool-lib')
+import { fromEvent } from 'graphcool-lib';
 
 module.exports = event =>
   new Promise((resolve, reject) => {
-    const basketId = event.data.basketId
+    const basketId = event.data.basketId;
 
-    const graphcool = fromEvent(event)
-    const api = graphcool.api('simple/v1')
+    const graphcool = fromEvent(event);
+    const api = graphcool.api('simple/v1');
 
     const query = `
       query getBasket($basketId: ID!) {
@@ -22,35 +20,35 @@ module.exports = event =>
           }
         }
       }
-    `
+    `;
 
     const variables = {
-      basketId
-    }
+      basketId,
+    };
 
     const calculateSubTotal = items => {
       return items.reduce(
         (sum, item) => sum + item.orderedItem.amount * item.quantity,
-        0
-      )
-    }
+        0,
+      );
+    };
 
     return api
       .request(query, variables)
-      .then(({Basket}) => {
+      .then(({ Basket }) => {
         if (!Basket) {
-          throw new Error(`Invalid basketId ${basketId}`)
+          throw new Error(`Invalid basketId ${basketId}`);
         }
 
-        return Basket.items
+        return Basket.items;
       })
       .then(items => calculateSubTotal(items))
       .then(subTotal => {
         resolve({
           data: {
-            subTotal
-          }
-        })
+            subTotal,
+          },
+        });
       })
-      .catch(error => resolve({error: error.message}))
-  })
+      .catch(error => resolve({ error: error.message }));
+  });

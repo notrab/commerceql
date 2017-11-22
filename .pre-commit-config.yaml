@@ -1,0 +1,4 @@
+   -   repo: https://github.com/commerceql/commerceql
+        sha: ''  # We'll use the SHA later when it's moved to an org
+        hooks:
+        -   id: prettier
