@@ -1,30 +1,3 @@
-type Product @model {
-  id: ID! @isUnique
-  name: String!
-  description: String
-  sku: String @isUnique
-  amount: Int @defaultValue(value: 0)
-  category: Category @relation(name: "CategoryProducts")
-  attributes: Json
-  basketItems: [BasketItem!]! @relation(name: "OrderedBasketItem")
-  image: Image @relation(name: "ProductImage")
-  active: Boolean @defaultValue(value: true)
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type Image @model {
-  id: ID! @isUnique
-  product: Product! @relation(name: "ProductImage")
-  file: File @relation(name: "ImageOnFile")
-}
-
-type Category @model {
-  id: ID! @isUnique
-  name: String!
-  products: [Product!]! @relation(name: "CategoryProducts")
-}
-
 type Basket @model {
   id: ID! @isUnique
   items: [BasketItem!]! @relation(name: "BasketItems")
@@ -39,6 +12,30 @@ type BasketItem @model {
   basket: Basket @relation(name: "BasketItems")
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+type Category @model {
+  id: ID! @isUnique
+  name: String!
+  products: [Product!]! @relation(name: "CategoryProducts")
+}
+
+type File @model {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+  images: [Image!]! @relation(name: "ImageOnFile")
+}
+
+type Image @model {
+  id: ID! @isUnique
+  product: Product! @relation(name: "ProductImage")
+  file: File @relation(name: "ImageOnFile")
 }
 
 type Order @model {
@@ -77,17 +74,22 @@ type OrderItem @model {
   updatedAt: DateTime!
 }
 
-type File @model {
-  contentType: String!
-  createdAt: DateTime!
+type Product @model {
   id: ID! @isUnique
   name: String!
-  secret: String! @isUnique
-  size: Int!
+  description: String
+  sku: String @isUnique
+  amount: Int @defaultValue(value: 0)
+  category: Category @relation(name: "CategoryProducts")
+  attributes: Json
+  basketItems: [BasketItem!]! @relation(name: "OrderedBasketItem")
+  image: Image @relation(name: "ProductImage")
+  active: Boolean @defaultValue(value: true)
+  createdAt: DateTime!
   updatedAt: DateTime!
-  url: String! @isUnique
-  images: [Image!]! @relation(name: "ImageOnFile")
 }
+
+# Enums
 
 enum FulfillmentStatus {
   FULFILLED
