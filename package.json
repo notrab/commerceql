@@ -9,7 +9,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,ts}": ["prettier --write", "git add"]
+    "*.ts": ["prettier --write", "git add"]
   },
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
