@@ -70,14 +70,14 @@ functions:
   getBasketSubTotal:
     handler:
       code:
-        src: ./src/getBasketSubTotal.js
+        src: ./src/getBasketSubTotal.ts
     type: resolver
     schema: ./src/getBasketSubTotal.graphql
 
   Checkout:
     handler:
       code:
-        src: ./src/Checkout.js
+        src: ./src/Checkout.ts
         environment:
           STRIPE_KEY: ${env:STRIPE_KEY}
     type: resolver
@@ -86,7 +86,7 @@ functions:
   sendOrderConfirmationEmail:
     handler:
       code:
-        src: ./src/sendOrderEmail.js
+        src: ./src/sendOrderEmail.ts
         environment:
           SENDGRID_API_KEY: ${env:SENDGRID_API_KEY}
     type: subscription
@@ -95,14 +95,14 @@ functions:
   # cleanupCarts:
   #   handler:
   #     code:
-  #       src: ./src/cleanupCarts.js
+  #       src: ./src/cleanupCarts.ts
   #   type: subscription
   #   query: ./src/cleanupCarts.graphql
 
   sendShippingConfirmationEmail:
     handler:
       code:
-        src: ./src/sendShippingEmail.js
+        src: ./src/sendShippingEmail.ts
         environment:
           SENDGRID_API_KEY: ${env:SENDGRID_API_KEY}
           STORE_NAME: ${env:STORE_NAME}
