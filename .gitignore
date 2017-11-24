@@ -1,8 +1,9 @@
 # dependencies
-/node_modules
+node_modules
 
 # misc
 .graphcoolrc
 .envrc
-/build
+build
 build.zip
+*.js
