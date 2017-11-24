@@ -5,9 +5,22 @@
   "repository": "https://github.com/CommerceQL/commerceql.git",
   "author": "Jamie Barton <hi_jamie@me.com>",
   "license": "MIT",
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": ["prettier --config ./.prettierrc --write", "git add"]
+  },
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
     "graphcool-lib": "^0.0.3",
     "stripe": "^5.1.1"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^5.0.0",
+    "prettier": "^1.8.2",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
   }
 }

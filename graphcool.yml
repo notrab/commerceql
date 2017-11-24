@@ -60,6 +60,11 @@ rootTokens:
   - commerceql
 
 functions:
+  hello:
+    handler:
+      code: src/hello.ts
+    type: resolver
+    schema: src/hello.graphql
   addItemToBasket:
     handler:
       code:
