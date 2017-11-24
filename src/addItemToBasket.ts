@@ -1,13 +1,13 @@
-'use latest'
-
-const {fromEvent} = require('graphcool-lib')
+import { fromEvent } from 'graphcool-lib';
 
 module.exports = event =>
   new Promise((resolve, reject) => {
-    const {basketId, productId, quantity = 1} = event.data
+    console.log(event);
 
-    const graphcool = fromEvent(event)
-    const api = graphcool.api('simple/v1')
+    const { basketId, productId, quantity = 1 } = event.data;
+
+    const graphcool = fromEvent(event);
+    const api = graphcool.api('simple/v1');
 
     const checkBasketItemExists = (basketId, productId) => {
       return api.request(
@@ -28,10 +28,10 @@ module.exports = event =>
       `,
         {
           basketId,
-          productId
-        }
-      )
-    }
+          productId,
+        },
+      );
+    };
 
     const createBasketItem = (basketId, productId, quantity) => {
       return api.request(
@@ -46,10 +46,10 @@ module.exports = event =>
         {
           basketId,
           productId,
-          quantity
-        }
-      )
-    }
+          quantity,
+        },
+      );
+    };
 
     const updateBasketItemQuantity = (id, quantity) => {
       return api.request(
@@ -63,15 +63,15 @@ module.exports = event =>
       `,
         {
           id,
-          quantity
-        }
-      )
-    }
+          quantity,
+        },
+      );
+    };
 
     return checkBasketItemExists(basketId, productId)
-      .then(({allBasketItems}) => {
+      .then(({ allBasketItems }) => {
         // if (!allBasketItems) {
-        return createBasketItem(basketId, productId, quantity)
+        return createBasketItem(basketId, productId, quantity);
         // } else {
         //   return updateBasketItemQuantity(
         //     allBasketItems[0].id,
@@ -80,19 +80,19 @@ module.exports = event =>
         // }
       })
       .then(data => {
-        console.log(data)
+        console.log(data);
 
         // const {BasketItem: {id, quantity}} = data
 
-        const id = 'abc'
-        const quantity = 1
+        const id = 'abc';
+        const quantity = 1;
 
         resolve({
           data: {
             id,
-            quantity
-          }
-        })
+            quantity,
+          },
+        });
       })
-      .catch(error => resolve({error: error.message}))
-  })
+      .catch(error => resolve({ error: error.message }));
+  });

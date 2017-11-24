@@ -63,7 +63,7 @@ functions:
   addItemToBasket:
     handler:
       code:
-        src: ./src/addItemToBasket.js
+        src: ./src/addItemToBasket.ts
     type: resolver
     schema: ./src/addItemToBasket.graphql
 
