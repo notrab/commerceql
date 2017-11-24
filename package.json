@@ -6,10 +6,14 @@
   "author": "Jamie Barton <hi_jamie@me.com>",
   "license": "MIT",
   "scripts": {
+    "format": "prettier --write ./src/*.ts",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.ts": ["prettier --write", "git add"]
+    "*.{js,ts}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
@@ -17,7 +21,6 @@
     "stripe": "^5.1.1"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
     "lint-staged": "^5.0.0",
     "prettier": "^1.8.2",
     "tslint": "^5.8.0",
