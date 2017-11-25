@@ -1,14 +1,24 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
+  "extends": [
+    "tslint:recommended"
+  ],
+  "rules": {
+    "quotemark": [
+      true,
+      "single"
     ],
-    "jsRules": {},
-    "rules": {
-        "quotemark": [true, "single"],
-        "semicolon": false,
-        "arrow-parens": false,
-        "no-shadowed-variable": false
+    "semicolon": false,
+    "arrow-parens": false,
+    "no-shadowed-variable": false,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
+    "no-multi-spaces": {
+      "exceptions": { "ImportDeclaration": true }
     },
-    "rulesDirectory": []
+  }
 }

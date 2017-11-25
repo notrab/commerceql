@@ -1,13 +1,32 @@
-'use latest'
+import { fromEvent } from 'graphcool-lib';
 
-const {fromEvent} = require('graphcool-lib')
+interface EventData {
+  basketId: string;
+}
 
-module.exports = event =>
-  new Promise((resolve, reject) => {
-    const basketId = event.data.basketId
+interface Basket {
+  id: string;
+  items: [Item];
+}
 
-    const graphcool = fromEvent(event)
-    const api = graphcool.api('simple/v1')
+interface Product {
+  amount: number;
+}
+
+interface Item {
+  id: string;
+  quantity: number;
+  orderedItem: Product;
+}
+
+export default async (event: FunctionEvent<EventData>) => {
+  console.log(event);
+
+  try {
+    const { basketId } = event.data;
+
+    const graphcool = fromEvent(event);
+    const api = graphcool.api('simple/v1');
 
     const query = `
       query getBasket($basketId: ID!) {
@@ -22,35 +41,42 @@ module.exports = event =>
           }
         }
       }
-    `
+    `;
 
     const variables = {
-      basketId
-    }
+      basketId,
+    };
 
-    const calculateSubTotal = items => {
-      return items.reduce(
-        (sum, item) => sum + item.orderedItem.amount * item.quantity,
-        0
-      )
-    }
-
-    return api
+    const subTotal: number = await api
       .request(query, variables)
-      .then(({Basket}) => {
+      .then(({ Basket }) => {
         if (!Basket) {
-          throw new Error(`Invalid basketId ${basketId}`)
+          return { error: `Invalid basketId ${basketId}` };
         }
 
-        return Basket.items
+        return Basket.items;
       })
-      .then(items => calculateSubTotal(items))
-      .then(subTotal => {
-        resolve({
-          data: {
-            subTotal
-          }
-        })
-      })
-      .catch(error => resolve({error: error.message}))
-  })
+      .then(items => calculateSubTotal(items));
+
+    return {
+      data: {
+        subTotal,
+      },
+    };
+  } catch (e) {
+    console.log(e);
+
+    return { error: 'Basket sub total could not be calculated' };
+  }
+};
+
+const calculateSubTotal = (items: [Item]): number => {
+  if (items.length === 0) {
+    return 0;
+  }
+
+  return items.reduce(
+    (sum, item) => sum + item.orderedItem.amount * item.quantity,
+    0,
+  );
+};

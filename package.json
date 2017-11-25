@@ -1,10 +1,5 @@
 {
-  "name": "platform",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/CommerceQL/commerceql.git",
-  "author": "Jamie Barton <hi_jamie@me.com>",
-  "license": "MIT",
+  "private": true,
   "scripts": {
     "format": "prettier --write ./src/*.ts",
     "precommit": "lint-staged"
@@ -18,7 +13,8 @@
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
     "graphcool-lib": "^0.0.3",
-    "stripe": "^5.1.1"
+    "stripe": "^5.1.1",
+    "validator": "^9.1.2"
   },
   "devDependencies": {
     "lint-staged": "^5.0.0",
