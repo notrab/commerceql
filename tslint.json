@@ -10,13 +10,7 @@
     "semicolon": false,
     "arrow-parens": false,
     "no-shadowed-variable": false,
-    "trailing-comma": [
-      true,
-      {
-        "multiline": "always",
-        "singleline": "never"
-      }
-    ],
+    "trailing-comma": "none",
     "no-multi-spaces": {
       "exceptions": { "ImportDeclaration": true }
     },

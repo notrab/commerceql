@@ -49,12 +49,11 @@ export default async (event: FunctionEvent<EventData>) => {
       api,
       allBasketItems[0].id,
       allBasketItems[0].quantity + quantity,
-    )
+    ).then(data => data.BasketItem)
 
     return {
       data: {
-        id: 'abc',
-        quantity: 100,
+        ...updatedBasketItem,
       },
     }
 
