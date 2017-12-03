@@ -37,12 +37,20 @@
   version "7.0.43"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.43.tgz#a187e08495a075f200ca946079c914e1a5fe962c"
 
+"@types/node@^8.0.53":
+  version "8.0.53"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.53.tgz#396b35af826fa66aad472c8cb7b8d5e277f4e6d8"
+
 "@types/request@^2.0.3":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@types/request/-/request-2.0.5.tgz#ba831498ada794b19278065690d88c26900783d6"
   dependencies:
     "@types/form-data" "*"
     "@types/node" "*"
+
+"@types/validator@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-6.3.0.tgz#d7454bd67c6a933a9dbe939ae16edbf0f6894e70"
 
 ajv@^5.1.0:
   version "5.2.3"

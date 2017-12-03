@@ -17,6 +17,8 @@
     "validator": "^9.1.2"
   },
   "devDependencies": {
+    "@types/node": "^8.0.53",
+    "@types/validator": "^6.3.0",
     "lint-staged": "^5.0.0",
     "prettier": "^1.8.2",
     "tslint": "^5.8.0",
