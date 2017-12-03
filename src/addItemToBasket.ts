@@ -1,17 +1,22 @@
 import { fromEvent, FunctionEvent } from 'graphcool-lib'
 import { GraphQLClient } from 'graphql-request'
 
+interface Basket {
+  allBasketItems: [BasketItem]
+}
+
 interface BasketItem {
   id: string
   quantity: number
 }
 
-interface AllBasketItems {
-  id: string
-  quantity: number
+interface EventData {
+  basketId: string
+  productId: string
+  quantity?: number
 }
 
-export default async (event: FunctionEvent<{}>) => {
+export default async (event: FunctionEvent<EventData>) => {
   console.log(event)
 
   try {
@@ -20,29 +25,38 @@ export default async (event: FunctionEvent<{}>) => {
 
     const { basketId, productId, quantity = 1 } = event.data
 
-    const allBasketItems: AllBasketItems = await checkBasketItemExists(
+    const allBasketItems: Basket = await checkBasketItemExists(
       api,
       basketId,
       productId,
-    ).then(r => r.allBasketItems)
+    ).then(data => data.allBasketItems)
 
-    if (!allBasketItems) {
-      const basketItem: BasketItem = await createBasketItem(
+    if (basketIsEmpty(allBasketItems)) {
+      const basketItem: any = await createBasketItem(
         api,
         basketId,
         productId,
         quantity,
-      )
-      return basketItem
+      ).then(data => data.BasketItem)
+      return {
+        data: {
+          ...basketItem,
+        },
+      }
     }
 
-    const updatedBasketItem: BasketItem = await updatedBasketItem(
+    const updatedBasketItem: BasketItem = await updateBasketItemQuantity(
       api,
       allBasketItems[0].id,
       allBasketItems[0].quantity + quantity,
-    ).then(r => r.data)
+    )
 
-    return updatedBasketItem
+    return {
+      data: {
+        id: 'abc',
+        quantity: 100,
+      },
+    }
 
     // return checkBasketItemExists(api, basketId, productId)
     //   .then(({ allBasketItems }) => {
@@ -78,33 +92,35 @@ export default async (event: FunctionEvent<{}>) => {
   }
 }
 
+const basketIsEmpty = items => items.length === 0
+
 const checkBasketItemExists = async (
   api: GraphQLClient,
   basketId: string,
   productId: string,
-): Promise<{ BasketItem }> => {
+) => {
   const query = `
-      query isItemInBasket($basketId:ID!, $productId:ID!) {
-        allBasketItems(filter: {
-          basket: {
-            id: $basketId
-          },
-          orderedItem: {
-            id: $productId
-          }
-        }) {
-          id
-          quantity
+    query isItemInBasket($basketId:ID!, $productId:ID!) {
+      allBasketItems(filter: {
+        basket: {
+          id: $basketId
+        },
+        orderedItem: {
+          id: $productId
         }
+      }) {
+        id
+        quantity
       }
-    `
+    }
+  `
 
   const variables = {
     basketId,
     productId,
   }
 
-  return api.request<{ BasketItem }>(query, variables)
+  return api.request(query, variables)
 }
 
 const createBasketItem = async (
@@ -114,13 +130,13 @@ const createBasketItem = async (
   quantity: number,
 ): Promise<{ BasketItem }> => {
   const mutation = `
-      mutation createBasketItem($basketId: ID!, $productId: ID!, $quantity: Int) {
-        BasketItem: createBasketItem(basketId: $basketId, orderedItemId: $productId, quantity: $quantity) {
-          id
-          quantity
-        }
+    mutation createBasketItem($basketId: ID!, $productId: ID!, $quantity: Int) {
+      BasketItem: createBasketItem(basketId: $basketId, orderedItemId: $productId, quantity: $quantity) {
+        id
+        quantity
       }
-    `
+    }
+  `
 
   const variables = {
     basketId,
@@ -137,13 +153,13 @@ const updateBasketItemQuantity = async (
   quantity: number,
 ): Promise<{ BasketItem }> => {
   const mutation = `
-      mutation updateBasketItem($id: ID!, $quantity: Int!) {
-        BasketItem: updateBasketItem(id: $id, quantity: $quantity) {
-          id
-          quantity
-        }
+    mutation updateBasketItem($id: ID!, $quantity: Int!) {
+      BasketItem: updateBasketItem(id: $id, quantity: $quantity) {
+        id
+        quantity
       }
-    `
+    }
+  `
 
   const variables = {
     id,

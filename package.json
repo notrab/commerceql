@@ -12,16 +12,16 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
-    "graphcool-lib": "^0.0.3",
-    "stripe": "^5.1.1",
+    "graphcool-lib": "^0.1.4",
+    "stripe": "^5.3.0",
     "validator": "^9.1.2"
   },
   "devDependencies": {
     "@types/node": "^8.0.53",
     "@types/validator": "^6.3.0",
-    "lint-staged": "^5.0.0",
+    "lint-staged": "^6.0.0",
     "prettier": "^1.8.2",
     "tslint": "^5.8.0",
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.2"
   }
 }
