@@ -1,11 +1,11 @@
 'use latest'
 
 const stripe = require('stripe')(process.env.STRIPE_KEY)
-const {fromEvent} = require('graphcool-lib')
+const { fromEvent } = require('graphcool-lib')
 
 module.exports = event =>
   new Promise((resolve, reject) => {
-    let {basketId} = event.data
+    let { basketId } = event.data
 
     const graphcool = fromEvent(event)
     const api = graphcool.api('simple/v1')
@@ -39,7 +39,7 @@ module.exports = event =>
         return Promise.resolve(user.stripeCustomerId)
       }
 
-      const {email, firstName, lastName} = user
+      const { email, firstName, lastName } = user
 
       return new Promise((resolve, reject) => {
         stripe.customers.create(
@@ -173,20 +173,26 @@ module.exports = event =>
     }
 
     return getBasket(basketId)
-      .then(({Basket}) => {
+      .then(({ Basket }) => {
         if (!Basket) {
           throw new Error(`Invalid basketId ${basketId}`)
         }
 
-        const {items} = Basket
+        const { items } = Basket
 
-        const {data} = event
-        const {stripeToken, firstName, lastName, email, stripeCustomerId} = data
+        const { data } = event
+        const {
+          stripeToken,
+          firstName,
+          lastName,
+          email,
+          stripeCustomerId
+        } = data
 
         // cleanup
         const user = !!stripeCustomerId
-          ? {firstName, lastName, email}
-          : {firstName, lastName, email, stripeCustomerId}
+          ? { firstName, lastName, email }
+          : { firstName, lastName, email, stripeCustomerId }
 
         // cleanup
         const orderTotal = getOrderTotal(items)
@@ -205,7 +211,7 @@ module.exports = event =>
               })
             )
           )
-          .then(({createOrder}) => {
+          .then(({ createOrder }) => {
             return resolve(
               Object.assign(
                 {},
@@ -217,7 +223,7 @@ module.exports = event =>
             )
           })
       })
-      .catch(error => resolve({error: error.message}))
+      .catch(error => resolve({ error: error.message }))
   })
 
 const getOrderTotal = items =>
@@ -227,7 +233,8 @@ const getDescription = items =>
   items
     .map(
       item =>
-        `${item.quantity}x ${item.orderedItem.name} @ $${item.orderedItem
-          .amount} each`
+        `${item.quantity}x ${item.orderedItem.name} @ $${
+          item.orderedItem.amount
+        } each`
     )
     .join(', ')

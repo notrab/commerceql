@@ -44,7 +44,7 @@ export default async (event: FunctionEvent<EventData>) => {
     `
 
     const variables = {
-      basketId,
+      basketId
     }
 
     const subTotal: number = await api
@@ -60,8 +60,8 @@ export default async (event: FunctionEvent<EventData>) => {
 
     return {
       data: {
-        subTotal,
-      },
+        subTotal
+      }
     }
   } catch (e) {
     console.log(e)
@@ -77,6 +77,6 @@ const calculateSubTotal = (items: [Item]): number => {
 
   return items.reduce(
     (sum, item) => sum + item.orderedItem.amount * item.quantity,
-    0,
+    0
   )
 }

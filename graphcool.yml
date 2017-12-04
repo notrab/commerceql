@@ -56,6 +56,9 @@ permissions:
   #   authenticated: false
   #   # query: ./permissions/Checkout.graphql
 
+  - operation: addItemToBasket
+    authenticated: false
+
 rootTokens:
   - commerceql
 
@@ -74,14 +77,14 @@ functions:
     type: resolver
     schema: ./src/getBasketSubTotal.graphql
 
-  Checkout:
+  checkout:
     handler:
       code:
-        src: ./src/Checkout.ts
+        src: ./src/checkout.ts
         environment:
           STRIPE_KEY: ${env:STRIPE_KEY}
     type: resolver
-    schema: ./src/Checkout.graphql
+    schema: ./src/checkout.graphql
 
   sendOrderConfirmationEmail:
     handler:

@@ -28,75 +28,46 @@ export default async (event: FunctionEvent<EventData>) => {
     const allBasketItems: Basket = await checkBasketItemExists(
       api,
       basketId,
-      productId,
+      productId
     ).then(data => data.allBasketItems)
 
     if (basketIsEmpty(allBasketItems)) {
-      const basketItem: any = await createBasketItem(
+      const basketItem: BasketItem = await createBasketItem(
         api,
         basketId,
         productId,
-        quantity,
+        quantity
       ).then(data => data.BasketItem)
       return {
         data: {
-          ...basketItem,
-        },
+          ...basketItem
+        }
       }
     }
 
     const updatedBasketItem: BasketItem = await updateBasketItemQuantity(
       api,
       allBasketItems[0].id,
-      allBasketItems[0].quantity + quantity,
+      allBasketItems[0].quantity + quantity
     ).then(data => data.BasketItem)
 
     return {
       data: {
-        ...updatedBasketItem,
-      },
+        ...updatedBasketItem
+      }
     }
-
-    // return checkBasketItemExists(api, basketId, productId)
-    //   .then(({ allBasketItems }) => {
-    //     if (!allBasketItems) {
-    //     return createBasketItem(api, basketId, productId, quantity).then(r => r.data)
-    //     } else {
-    //       return updateBasketItemQuantity(
-    //         api,
-    //         allBasketItems[0].id,
-    //         allBasketItems[0].quantity + quantity
-    //       )
-    //     }
-    //   })
-    //   .then(data => {
-    //     console.log(data)
-    //
-    //     // const {BasketItem: {id, quantity}} = data
-    //
-    //     const id = 'abc'
-    //     const quantity = 1
-    //
-    //     resolve({
-    //       data: {
-    //         id,
-    //         quantity,
-    //       },
-    //     })
-    //   })
-    //   .catch(error => resolve({ error: error.message }))
   } catch (e) {
     console.log(e)
     return { error: 'An unexpected error occuring adding Item to Basket' }
   }
 }
 
-const basketIsEmpty = items => items.length === 0
+const basketIsEmpty: boolean = (items = []) => !!items.length
 
 const checkBasketItemExists = async (
   api: GraphQLClient,
   basketId: string,
-  productId: string,
+  productId: string
 ) => {
   const query = `
     query isItemInBasket($basketId:ID!, $productId:ID!) {
@@ -116,7 +87,7 @@ const checkBasketItemExists = async (
 
   const variables = {
     basketId,
-    productId,
+    productId
   }
 
   return api.request(query, variables)
@@ -126,7 +97,7 @@ const createBasketItem = async (
   api: GraphQLClient,
   basketId: string,
   productId: string,
-  quantity: number,
+  quantity: number
 ): Promise<{ BasketItem }> => {
   const mutation = `
     mutation createBasketItem($basketId: ID!, $productId: ID!, $quantity: Int) {
@@ -140,7 +111,7 @@ const createBasketItem = async (
   const variables = {
     basketId,
     productId,
-    quantity,
+    quantity
   }
 
   return api.request<{ BasketItem }>(mutation, variables)
@@ -149,7 +120,7 @@ const createBasketItem = async (
 const updateBasketItemQuantity = async (
   api: GraphQLClient,
   id: string,
-  quantity: number,
+  quantity: number
 ): Promise<{ BasketItem }> => {
   const mutation = `
     mutation updateBasketItem($id: ID!, $quantity: Int!) {
@@ -162,7 +133,7 @@ const updateBasketItemQuantity = async (
 
   const variables = {
     id,
-    quantity,
+    quantity
   }
 
   return api.request<{ BasketItem }>(mutation, variables)

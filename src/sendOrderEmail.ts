@@ -20,7 +20,7 @@ module.exports = event => {
     html: `
       <p>Hi ${node.billingName}</p>
       <p>Your order has been received!</p>
-    `,
+    `
   }
 
   return new Promise((resolve, reject) => {

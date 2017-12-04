@@ -16,7 +16,7 @@ export default async (event: FunctionEvent<{}>) => {
         id =>
           `${id}: deleteCartItem(id: "${id}") {
         id
-      }`,
+      }`
       )
       .join('\n')
 
