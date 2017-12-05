@@ -8,3 +8,4 @@ build
 .build
 build.zip
 *.js
+package-lock.json
