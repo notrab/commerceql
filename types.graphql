@@ -1,3 +1,8 @@
+type User @model {
+  id: ID! @isUnique
+  email: String! @isUnique
+}
+
 type Product @model {
   id: ID! @isUnique
   name: String!
