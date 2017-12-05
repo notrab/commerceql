@@ -1,6 +1,7 @@
 type User @model {
   id: ID! @isUnique
   email: String! @isUnique
+  admin: Boolean! @defaultValue(value: false)
 }
 
 type Product @model {
