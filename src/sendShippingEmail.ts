@@ -1,28 +1,38 @@
-'use latest'
+import sgMail from '@sendgrid/mail'
+import { fromEvent, FunctionEvent } from 'graphcool-lib'
 
-const sgMail = require('@sendgrid/mail')
-const { fromEvent } = require('graphcool-lib')
+interface Order {
+  node: {
+    email: string
+    billingName: string
+  }
+}
 
-module.exports = event =>
-  new Promise((resolve, reject) => {
-    if (!process.env['SENDGRID_API_KEY']) {
-      console.log('Please provide a valid SENDGRID_API_KEY')
-      return { error: 'CommerceQL is not configured to work with SendGrid.' }
-    }
+interface EventData {
+  order: Order
+}
 
-    const graphcool = fromEvent(event)
-    const api = graphcool.api('simple/v1')
+export default async (event: FunctionEvent<EventData>) => {
+  if (!process.env['SENDGRID_API_KEY']) {
+    console.log('Please provide a valid SENDGRID_API_KEY')
+    return { error: 'CommerceQL is not configured to work with SendGrid.' }
+  }
 
-    sgMail.setApiKey(process.env['SENDGRID_API_KEY'])
+  const graphcool = fromEvent(event)
+  const api = graphcool.api('simple/v1')
 
-    const { node } = event.data.Order
+  sgMail.setApiKey(process.env['SENDGRID_API_KEY'])
 
-    if (node.fulfillmentStatus === 'FULFILLED') {
-      sendEmail(node)
-        .then(() => resolve())
-        .catch(error => resolve({ error: error.message }))
-    }
-  })
+  const { node } = event.data.Order
+
+  if (node.fulfillmentStatus === 'FULFILLED') {
+    sendEmail(node)
+      .then(() => {
+        return
+      })
+      .catch(err => ({ error: err.message }))
+  }
+}
 
 const sendEmail = order => {
   const { email, billingName } = order
@@ -41,14 +51,12 @@ const sendEmail = order => {
   return new Promise((resolve, reject) => {
     sgMail
       .send(message)
-      .then(() => {
-        return resolve({ data: { success: true } })
-      })
-      .catch(error => {
+      .then(() => ({ data: { success: true } }))
+      .catch(err => {
         console.log('Email could not be sent because an error occured:')
-        console.log(error)
+        console.log(err)
 
-        return reject({ error: error.message })
+        return { error: err.message }
       })
   })
 }

@@ -62,7 +62,7 @@ export default async (event: FunctionEvent<EventData>) => {
   }
 }
 
-const basketIsEmpty: boolean = (items = []) => !!items.length
+const basketIsEmpty: boolean = (items = []) => items.length === 0
 
 const checkBasketItemExists = async (
   api: GraphQLClient,

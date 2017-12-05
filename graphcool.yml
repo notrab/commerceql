@@ -1,9 +1,6 @@
 types: ./types.graphql
 
 permissions:
-  - operation: Image.create
-  - operation: ImageOnFile.*
-  - operation: ProductImage.*
   - operation: Basket.create
   - operation: Basket.read
   - operation: Basket.update
@@ -15,49 +12,63 @@ permissions:
   - operation: Product.read
     authenticated: false
   - operation: Product.create
+    authenticated: true
+    query: ./permissions/models/User.graphql:isAdmin
   - operation: Product.update
+    authenticated: true
+    query: ./permissions/models/User.graphql:isAdmin
   - operation: Product.delete
     authenticated: true
-    # query: ./permissions/Product.graphql
+    query: ./permissions/models/User.graphql:isAdmin
 
   - operation: Image.read
     authenticated: false
+  # - operation: ImageOnFile.*
+  # - operation: ProductImage.*
   - operation: Image.create
+    authenticated: true
+    query: ./permissions/models/User.graphql:isAdmin
   - operation: Image.update
+    authenticated: true
+    query: ./permissions/models/User.graphql:isAdmin
   - operation: Image.delete
     authenticated: true
-    # query: ./permissions/Product.graphql
+    query: ./permissions/models/User.graphql:isAdmin
 
   - operation: Category.read
     authenticated: false
   - operation: Category.create
+    authenticated: true
+    query: ./permissions/models/User.graphql:isAdmin
   - operation: Category.update
+    authenticated: true
+    query: ./permissions/models/User.graphql:isAdmin
   - operation: Category.delete
     authenticated: true
-    # query: ./permissions/Category.graphql
+    query: ./permissions/models/User.graphql:isAdmin
 
   - operation: File.read
     authenticated: false
   - operation: File.create
+    authenticated: true
+    query: ./permissions/models/User.graphql:isAdmin
   - operation: File.update
+    authenticated: true
+    query: ./permissions/models/User.graphql:isAdmin
   - operation: File.delete
     authenticated: true
-    # query: ./permissions/Product.graphql
+    query: ./permissions/models/User.graphql:isAdmin
 
   - operation: Order.read
+    authenticated: true
+    query: ./permissions/models/User.graphql:isAdmin
   - operation: Order.update
     authenticated: true
-    # query: ./permissions/Order.graphql
+    query: ./permissions/models/User.graphql:isAdmin
 
   - operation: OrderItem.read
     authenticated: true
-
-  # - operation: Checkout
-  #   authenticated: false
-  #   # query: ./permissions/Checkout.graphql
-
-  - operation: addItemToBasket
-    authenticated: false
+    query: ./permissions/models/User.graphql:isAdmin
 
 rootTokens:
   - commerceql
