@@ -1,6 +1,6 @@
 <p align="center"><a href="https://www.commerceql.com"><img src="https://i.imgur.com/zPKLBwG.png" title="Serverless GraphQL eCommerce platform" alt="CommerceQL" width="381"></a></p>
 
-[Website](https://commerceql.com) • [Demo Store](https://demo.commerceql.com) • [Watch the video demo](https://commerceql.com/#video)
+[Website](https://commerceql.com) • [Demo Store]() • [Watch the video demo]()
 
 CommerceQL is a minimalist serverless eCommerce template, designed to run on [Graphcool](https://graph.cool).
 
@@ -75,9 +75,9 @@ When using the CommerceQL Platform template, we recommend the following flow ins
 
   This mutation will add a product to the `Basket` as a `BasketItem`. If you do not provide a `basketId`, one will be assigned in the response. You can use this to add additional `BasketItem`'s.
 
-- #### `getBasket(id: ID)`
+- #### `getBasketMeta(id: ID)`
 
-  This query will provide you with details about the `Basket`, including `id`, `subTotal` and `items`. If you don't have a `basketId`, one will be assigned in the response.
+  This query will provide you with details about the `Basket`, including `subTotal`, `totalItems` and `uniqueItems`.
 
 - #### `Checkout(...)`
 

@@ -1,0 +1,9 @@
+type BasketMetaPayload {
+  subTotal: Int!
+  totalItems: Int!
+  uniqueItems: Int!
+}
+
+extend type Query {
+  getBasketMeta(basketId: ID!): BasketMetaPayload
+}

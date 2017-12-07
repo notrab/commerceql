@@ -81,12 +81,12 @@ functions:
     type: resolver
     schema: ./src/addItemToBasket.graphql
 
-  getBasketSubTotal:
+  getBasketMeta:
     handler:
       code:
-        src: ./src/getBasketSubTotal.ts
+        src: ./src/getBasketMeta.ts
     type: resolver
-    schema: ./src/getBasketSubTotal.graphql
+    schema: ./src/getBasketMeta.graphql
 
   checkout:
     handler:
