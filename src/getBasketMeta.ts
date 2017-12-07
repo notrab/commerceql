@@ -36,8 +36,8 @@ export default async (event: FunctionEvent<EventData>) => {
     }
 
     const subTotal = calculateSubTotal(Basket.items)
-    const totalItems = Basket._itemsMeta.count
-    const uniqueItems = Basket.items.reduce(
+    const uniqueItems = Basket._itemsMeta.count
+    const totalItems = Basket.items.reduce(
       (sum, item) => sum + item.quantity,
       0
     )
