@@ -1,0 +1,6 @@
+type Product {
+  id: ID! @unique
+  name: String!
+  description: String
+  isActive: Boolean! @default(value: true)
+}

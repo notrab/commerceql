@@ -1,0 +1,8 @@
+mutation {
+  createProduct(data: {
+    name: "Modern Lamp",
+    active: true
+    }) {
+      id
+    }
+}

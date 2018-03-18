@@ -1,11 +1,11 @@
 # dependencies
 node_modules
 
+# build
+dist
+
 # misc
-.graphcoolrc
-.envrc
-build
-.build
-build.zip
+.env
 *.js
+*.log
 package-lock.json

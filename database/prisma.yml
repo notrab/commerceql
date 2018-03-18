@@ -1,0 +1,12 @@
+service: commerceql-boilerplate
+
+stage: ${env:PRISMA_STAGE}
+
+secret: ${env:PRISMA_SECRET}
+
+datamodel: datamodel.graphql
+
+seed:
+  import: seed.graphql
+
+cluster: jamie-barton/prisma-us1
