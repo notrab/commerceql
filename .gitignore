@@ -6,6 +6,5 @@ dist
 
 # misc
 .env
-*.js
 *.log
 package-lock.json
