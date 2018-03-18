@@ -1,0 +1,5 @@
+# import Product from './generated/prisma.graphql'
+
+type Query {
+  products: [Product!]!
+}

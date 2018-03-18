@@ -2,7 +2,7 @@
 
 [Website](https://commerceql.com) • [Demo Store]() • [Watch the video demo]()
 
-CommerceQL is a minimalist serverless eCommerce template, designed to run on [Graphcool](https://graph.cool).
+CommerceQL is a minimalist serverless eCommerce template, designed to run on [Prisma](https://prismagraphql.com).
 
 ## Contents
 
@@ -19,10 +19,10 @@ CommerceQL is designed to be used with the [Graphcool Framework](https://github.
 You will need to be running the latest version of the Graphcool CLI to get started with CommerceQL.
 
   ```bash
-  npm install -g graphcool@next
-  mkdir my-online-store-platform && cd "$_"
-  graphcool init # use this to create a new Graphcool service
-  graphcool add-template commerceql/commerceql
+  npm install -g graphql-cli
+  graphql create my-app --boilerplate commerceql/commerceql
+  cd my-app
+  yarn dev
   ```
 
 ## <a name="configure"></a>Configure
