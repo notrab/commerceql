@@ -3,8 +3,7 @@ node_modules
 
 # build
 dist
-
+.env.*
 # misc
-.env
 *.log
 package-lock.json
