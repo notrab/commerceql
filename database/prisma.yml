@@ -8,5 +8,3 @@ datamodel: datamodel.graphql
 
 seed:
   import: seed.graphql
-
-cluster: jamie-barton/prisma-us1
