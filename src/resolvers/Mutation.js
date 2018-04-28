@@ -1,4 +1,6 @@
+const isEmail = require('validator/lib/isEmail')
 const Stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+
 const { calculateOrderTotal } = require('../utils')
 
 const Mutation = {

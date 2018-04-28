@@ -1,4 +1,3 @@
-const isEmail = require('validator/lib/isEmail')
 const isInt = require('validator/lib/isInt')
 
 function isNegativeInt(int) {
