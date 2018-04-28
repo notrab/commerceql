@@ -9,6 +9,7 @@ CommerceQL is a minimalist eCommerce [GraphQL](https://prismagraphql.com) boiler
 * [Development](#dev)
 * [Deploy](#deploy)
 * [Usage](#usage)
+* [Sponsors](#sponors)
 
 ## <a name="setup"></a>Setup
 
@@ -29,7 +30,7 @@ Go ahead and add your `STRIPE_SECRET_KEY` inside `.env`.
 
 ⚠️ Note: This boilerplate doesn't handle auth. You'll want to protect the `order/s` queries.
 
-## <a name="dev"></a>Integrate
+## <a name="dev"></a>Development
 
 CommerceQL can be used to build a custom GraphQL backed online store, without the limitations of hosted solutions.
 
@@ -150,3 +151,7 @@ subscription {
   }
 }
 ```
+
+## <a name="sponsors"></a>Sponsors
+
+❤️ This project is sponsored by [Moltin](https://moltin.com).
