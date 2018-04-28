@@ -9,7 +9,7 @@ CommerceQL is a minimalist eCommerce [GraphQL](https://prismagraphql.com) boiler
 * [Development](#dev)
 * [Deploy](#deploy)
 * [Usage](#usage)
-* [Sponsors](#sponors)
+* [Sponsors](#sponsors)
 
 ## <a name="setup"></a>Setup
 
