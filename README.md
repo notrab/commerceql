@@ -25,7 +25,7 @@ yarn dev
 
 The setup above should take care of configuring your `ENV` with your Prisma endpoint. You'll want to configure Stripe so you can begin to take payments using the `checkout` mutation.
 
-Go ahead and add your 'STRIPE_SECRET_KEY` inside `.env`.
+Go ahead and add your `STRIPE_SECRET_KEY` inside `.env`.
 
 ⚠️ Note: This boilerplate doesn't handle auth. You'll want to protect the `order/s` queries.
 
@@ -45,7 +45,8 @@ If you make any changes to the schema or resolvers, you'll want to run `prisma d
 
 Once you're up and running, locally with `yarn dev` or deployed to `now` you can start to run the provided queries, mutations and subscriptions.
 
-### Mutations
+
+### Mutations
 
 #### Place an order
 ```graphql
