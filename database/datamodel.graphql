@@ -1,6 +1,28 @@
-type Product {
+type Order {
   id: ID! @unique
-  name: String!
-  description: String
-  isActive: Boolean! @default(value: true)
+  items: [OrderItem!]!
+  email: String!
+  total: Int!
+  currency: String @default(value: "GBP")
+  metadata: Json
+  payments: [Payment!]!
+  createdAt: DateTime!
+}
+
+type OrderItem {
+  id: ID! @unique
+  order: Order!
+  description: String!
+  quantity: Int! @default(value: 1)
+  amount: Int! @default(value: 0)
+  metadata: Json
+}
+
+type Payment {
+  id: ID! @unique
+  order: Order!
+  status: String!
+  reference: String!
+  currency: String!
+  createdAt: DateTime!
 }

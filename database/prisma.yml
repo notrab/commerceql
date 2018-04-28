@@ -1,10 +1,15 @@
-service: commerceql-boilerplate
+# The endpoint to your Prisma API
+endpoint: ${env:PRISMA_ENDPOINT}
 
-stage: ${env:PRISMA_STAGE}
-
-secret: ${env:PRISMA_SECRET}
-
+# The data model
 datamodel: datamodel.graphql
 
-seed:
-  import: seed.graphql
+# This will download the GraphQL schema
+# into src/generated/prisma.graphql
+hooks:
+  post-deploy:
+    - graphql get-schema --project database
+
+# The secret is used to generate a JWT
+# for HTTP `Authorization` header requests
+# secret: ${env:PRISMA_SECRET}

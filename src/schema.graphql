@@ -1,5 +1,33 @@
-# import Product from './generated/prisma.graphql'
+# import Order from "./generated/prisma.graphql"
 
 type Query {
-  products: [Product!]!
+  order(id: ID!): Order
+  orders: [Order!]!
+}
+
+type Mutation {
+  checkout(
+    email: String!
+    token: String!
+    currency: CURRENCY!
+    items: [OrderItemInput]
+    metadata: Json
+  ): Order
+}
+
+type Subscription {
+  ordersSubscription: OrderSubscriptionPayload!
+}
+
+input OrderItemInput {
+  description: String!
+  amount: Int
+  quantity: Int
+  metadata: Json
+}
+
+enum CURRENCY {
+  GBP
+  USD
+  EUR
 }

@@ -1,8 +1,0 @@
-subscription {
-  Order(filter: { mutation_in: CREATED }) {
-    node {
-      billingName
-      email
-    }
-  }
-}
