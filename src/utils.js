@@ -5,7 +5,7 @@ function isNegativeInt(int) {
 }
 
 function calculateOrderTotal(items) {
-  items.reduce((sum, item) => {
+  return items.reduce((sum, item) => {
     const { amount = 0, quantity = 1 } = item
 
     if (isNegativeInt(amount)) {
