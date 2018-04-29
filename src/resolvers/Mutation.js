@@ -1,5 +1,5 @@
 const isEmail = require('validator/lib/isEmail')
-const Stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 const { calculateOrderTotal } = require('../utils')
 
@@ -13,10 +13,24 @@ const Mutation = {
 
     const total = await calculateOrderTotal(items)
 
-    const prismaOrder = await ctx.db.mutation.createOrder(
+    const { id: reference, status, ...theRest } = await stripe.charges.create({
+      amount: total,
+      currency,
+      source: token,
+      receipt_email: email
+    })
+
+    const order = await ctx.db.mutation.createOrder(
       {
         data: {
           items: { create: items },
+          payments: {
+            create: {
+              reference,
+              status,
+              currency
+            }
+          },
           email,
           total,
           currency,
@@ -26,47 +40,7 @@ const Mutation = {
       info
     )
 
-    try {
-      const { id: reference, status } = await Stripe.charges.create({
-        amount: total,
-        currency,
-        description: `Payment for order ${prismaOrder.id}`,
-        source: token,
-        receipt_email: email
-      })
-
-      await ctx.db.mutation.createPayment({
-        data: {
-          order: {
-            connect: {
-              id: prismaOrder.id
-            }
-          },
-          status,
-          reference,
-          currency
-        }
-      })
-    } catch (errors) {
-      await ctx.db.mutation.createPayment({
-        data: {
-          order: {
-            connect: {
-              id: prismaOrder.id
-            }
-          },
-          status: 'declined',
-          reference: 'abc',
-          currency
-        }
-      })
-
-      return {
-        errors
-      }
-    }
-
-    return prismaOrder
+    return order
   }
 }
 
