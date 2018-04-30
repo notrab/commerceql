@@ -1,10 +1,4 @@
 {
   "name": "commerceql-boilerplate",
-  "dotenv": true,
-  "env": {
-    "PRISMA_ENDPOINT": "@prisma-endpoint",
-    "PRISMA_SECRET": "@prisma-secret",
-    "APP_SECRET": "@app-secret",
-    "STRIPE_SECRET_KEY": "@stripe-secret-key"
-  }
+  "dotenv": true
 }
