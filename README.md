@@ -94,7 +94,7 @@ mutation {
 #### Get all orders
 ```graphql
 {
-  order(id: "someID") {
+  orders {
     id
     email
     total
