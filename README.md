@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/rur3U5y.png" title="Serverless GraphQL eCommerce platform" alt="CommerceQL" width="492"></p>
+<p align="center"><img src="https://i.imgur.com/QChDq1R.png" title="Serverless GraphQL eCommerce platform" alt="CommerceQL" /></p>
 
 CommerceQL is a minimalist eCommerce [GraphQL](https://prismagraphql.com) boilerplate.
 
