@@ -1,6 +1,6 @@
 {
   "private": true,
   "devDependencies": {
-    "graphql-boilerplate-install": "^0.1.9"
+    "graphql-boilerplate-install": "0.1.9"
   }
 }
