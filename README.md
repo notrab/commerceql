@@ -2,7 +2,7 @@
 
 CommerceQL is a minimalist eCommerce [GraphQL](https://prismagraphql.com) boilerplate.
 
-[Documentation](https://docs.commerceql.com) | [Website](https://commerceql.com) | [Slack](https://slack.commerceql.com)
+[Documentation](https://docs.commerceql.com) • [Website](https://commerceql.com) • [Slack](https://slack.commerceql.com)
 
 ## Contents
 
