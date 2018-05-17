@@ -1,4 +1,5 @@
 const isInt = require('validator/lib/isInt')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 function isNegativeInt(int) {
   return !isInt(int.toString(), { gt: -1 })
@@ -20,7 +21,12 @@ function calculateOrderTotal(items) {
   }, 0)
 }
 
+function stripeCharge(charge) {
+  return stripe.charges.create(charge)
+}
+
 module.exports = {
   isNegativeInt,
-  calculateOrderTotal
+  calculateOrderTotal,
+  stripeCharge
 }

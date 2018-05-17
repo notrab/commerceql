@@ -1,7 +1,6 @@
 const isEmail = require('validator/lib/isEmail')
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
-const { calculateOrderTotal } = require('../utils')
+const { calculateOrderTotal, stripeCharge } = require('../utils')
 
 const Mutation = {
   checkout: async (_, args, ctx, info) => {
@@ -13,7 +12,7 @@ const Mutation = {
 
     const total = await calculateOrderTotal(items)
 
-    const { id: reference, status, ...theRest } = await stripe.charges.create({
+    const { id: reference, status, ...theRest } = await stripeCharge({
       amount: total,
       currency,
       source: token,
