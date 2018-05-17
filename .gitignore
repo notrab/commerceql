@@ -6,4 +6,3 @@ dist
 .env.*
 # misc
 *.log
-package-lock.json
