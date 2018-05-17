@@ -8,7 +8,9 @@ datamodel: datamodel.graphql
 # into src/generated/prisma.graphql
 hooks:
   post-deploy:
+    - echo "Deployment finished"
     - graphql get-schema --project database
+    - graphql prepare
 
 # The secret is used to generate a JWT
 # for HTTP `Authorization` header requests
