@@ -3,8 +3,16 @@ const Query = {
     return ctx.db.query.order({ where: { id } }, info)
   },
 
-  orders: (_, args, ctx, info) => {
-    return ctx.db.query.orders({}, info)
+  orders: (
+    _,
+    { where, orderBy, skip, after, before, first, last },
+    ctx,
+    info
+  ) => {
+    return ctx.db.query.orders(
+      { where, orderBy, skip, after, before, first, last },
+      info
+    )
   }
 }
 

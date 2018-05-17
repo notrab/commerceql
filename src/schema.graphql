@@ -1,8 +1,16 @@
-# import Order from "./generated/prisma.graphql"
+# import Order, OrderWhereInput, OrderOrderByInput, OrderSubscriptionPayload, PaymentSubscriptionPayload from "./generated/prisma.graphql"
 
 type Query {
   order(id: ID!): Order
-  orders: [Order!]!
+  orders(
+    where: OrderWhereInput
+    orderBy: OrderOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Order!]!
 }
 
 type Mutation {
@@ -16,7 +24,8 @@ type Mutation {
 }
 
 type Subscription {
-  ordersSubscription: OrderSubscriptionPayload!
+  orders: OrderSubscriptionPayload!
+  payments: PaymentSubscriptionPayload!
 }
 
 input OrderItemInput {
