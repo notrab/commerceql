@@ -2,8 +2,6 @@ const fs = require('fs')
 const {
   replaceInFiles,
   deploy,
-  writeEnv,
-  getInfo,
   makeSandboxEndpoint
 } = require('graphql-boilerplate-install')
 
@@ -27,6 +25,6 @@ module.exports = async ({ project, projectDir }) => {
   console.log(`\
 Next steps:
   1. Change directory: \`cd ${projectDir}\`
-  2. Start local server and open Playground: \`yarn dev\`
+  2. Start local server and open Playground: \`npm run dev\`
 `)
 }

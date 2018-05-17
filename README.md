@@ -2,6 +2,8 @@
 
 CommerceQL is a minimalist eCommerce [GraphQL](https://prismagraphql.com) boilerplate.
 
+[Documentation](https://docs.commerceql.com) | [Website](https://commerceql.com) | [Slack](https://slack.commerceql.com)
+
 ## Contents
 
 * [Setup](#setup)
@@ -19,7 +21,7 @@ You will need to be running the latest version of `graphql-cli`, `prisma` and ha
 npm install -g graphql-cli prisma
 graphql create my-commerce-app --boilerplate commerceql/commerceql
 cd my-commerce-app
-yarn dev
+npm run dev
 ```
 
 ## <a name="config"></a>Configure
@@ -32,7 +34,7 @@ Go ahead and add your `STRIPE_SECRET_KEY` inside `.env`.
 
 ## <a name="dev"></a>Development
 
-CommerceQL can be used to build a custom GraphQL backed online store, without the limitations of hosted solutions.
+CommerceQL can be used to build a custom GraphQL backed eCommerce app, without the limitations of hosted solutions.
 
 You can extend the CommerceQL platform by adding additional functions, types and permissions, or you can use it "as is" and start selling 💰.
 
@@ -44,113 +46,7 @@ If you make any changes to the schema or resolvers, you'll want to run `prisma d
 
 ## Usage
 
-Once you're up and running, locally with `yarn dev` or deployed to `now` you can start to run the provided queries, mutations and subscriptions.
-
-
-### Mutations
-
-#### Place an order
-```graphql
-mutation {
-  checkout(
-    email: "hi@jamiebarton.co.uk",
-    token: "tok_visa",
-    currency:GBP,
-    items: [{
-      description: "T-Shirt",
-      amount: 1250,
-      quantity: 1,
-      metadata: {
-        size: "Large",
-        sex: "M",
-        colour: "Red"
-      }
-    }, {
-      description: "Trainers",
-      amount: 7500,
-      quantity: 1,
-      metadata: {
-        brand: "Nike",
-        size: 11,
-        range: "Samba"
-      }
-    }],
-    metadata: {
-      shipping_address: {
-        line_1: "123 Commerce Road",
-        country: "United Kingdom"
-      }
-    }
-  ) {
-    id
-    total
-    createdAt
-  }
-}
-```
-
-### Queries
-
-#### Get all orders
-```graphql
-{
-  orders {
-    id
-    email
-    total
-    currency
-    metadata
-    createdAt
-    items {
-      id
-      description
-      quantity
-      amount
-      metadata
-    }
-    payments {
-      id
-      status
-      reference
-      currency
-      createdAt
-    }
-  }
-}
-```
-
-#### Get an Order by ID
-```graphql
-{
-  order(id: "someID") {
-    id
-    email
-    total
-     # ...
-  }
-}
-```
-
-### Subscriptions
-
-#### Subscribe to new orders
-```graphql
-subscription {
-  ordersSubscription {
-    node {
-      id
-      email
-      total
-    }
-    updatedFields
-    previousValues {
-      id
-      email
-      total
-    }
-  }
-}
-```
+Once you're up and running, locally with `npml run dev` or deployed to `now` you can start to run the provided queries, mutations and subscriptions.
 
 ## <a name="sponsors"></a>Sponsors
 
