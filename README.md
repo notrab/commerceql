@@ -1,6 +1,6 @@
 <p align="center"><img src="https://i.imgur.com/QChDq1R.png" title="Serverless GraphQL eCommerce platform" alt="CommerceQL" /></p>
 
-CommerceQL is a minimalist eCommerce [GraphQL](https://prismagraphql.com) boilerplate.
+CommerceQL is a minimalist eCommerce [GraphQL](https://prisma.io) boilerplate.
 
 [Documentation](https://docs.commerceql.com) • [Website](https://commerceql.com) • [Slack](https://slack.commerceql.com)
 
@@ -15,7 +15,7 @@ CommerceQL is a minimalist eCommerce [GraphQL](https://prismagraphql.com) boiler
 
 ## <a name="setup"></a>Setup
 
-You will need to be running the latest version of `graphql-cli`, `prisma` and have a [Prisma](https://prismagraphql.com) account too.
+You will need to be running the latest version of `graphql-cli`, `prisma` and have a [Prisma](https://prisma.io) account too.
 
 ```bash
 npm install -g graphql-cli prisma
