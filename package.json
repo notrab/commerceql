@@ -14,7 +14,7 @@
     "graphql-yoga": "1.16.1",
     "prisma-binding": "2.1.4",
     "stripe": "6.7.0",
-    "validator": "10.5.0"
+    "validator": "10.6.0"
   },
   "devDependencies": {
     "dotenv": "6.0.0",
