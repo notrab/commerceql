@@ -5063,9 +5063,9 @@ strip-outer@^1.0.0:
   dependencies:
     escape-string-regexp "^1.0.2"
 
-stripe@6.8.0:
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.8.0.tgz#1311116728728afc34d4eb7459aeb29f0fa2ff91"
+stripe@6.10.0:
+  version "6.10.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.10.0.tgz#b594223d0a03b932dff6a0db4614f3f497bdd1bd"
   dependencies:
     lodash.isplainobject "^4.0.6"
     qs "~6.5.1"
