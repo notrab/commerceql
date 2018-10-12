@@ -4257,9 +4257,9 @@ prettier@1.14.3, prettier@^1.14.2:
   version "1.14.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.14.3.tgz#90238dd4c0684b7edce5f83b0fb7328e48bd0895"
 
-pretty-quick@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.7.0.tgz#6be2a707f874b56a461f6508c9fbd5d1c9234930"
+pretty-quick@1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.8.0.tgz#067ebe744ddb4e1ed4e1ee1af9648815121f78fc"
   dependencies:
     chalk "^2.3.0"
     execa "^0.8.0"
