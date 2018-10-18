@@ -11,7 +11,7 @@
     "start": "nodemon -e js,graphql -x node -r dotenv/config src/index.js"
   },
   "dependencies": {
-    "graphql-yoga": "1.16.6",
+    "graphql-yoga": "1.16.7",
     "prisma-binding": "2.1.6",
     "stripe": "6.12.1",
     "validator": "10.8.0"
