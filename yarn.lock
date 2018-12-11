@@ -1898,10 +1898,11 @@ graphcool-yml@0.4.15:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-graphql-binding@2.3.6:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-2.3.6.tgz#37546f038567d56ea4f3ee3ec9e6629d078d9545"
+graphql-binding@2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/graphql-binding/-/graphql-binding-2.3.7.tgz#2480d9ae4582ab1fbedb3ab1ae67963f82a8b028"
   dependencies:
+    graphql "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
     graphql-import "^0.7.1"
     graphql-tools "4.0.3"
     iterall "1.2.2"
@@ -3891,15 +3892,16 @@ pretty-quick@1.8.0:
     ignore "^3.3.7"
     mri "^1.1.0"
 
-prisma-binding@2.2.9:
-  version "2.2.9"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.9.tgz#03f9fb3e3bb6336364afb2eacfdbf58a67ea8740"
+prisma-binding@2.2.10:
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.10.tgz#c8af90ea14bdb5f76146699b6e7e1186f723779e"
   dependencies:
     apollo-link "1.2.4"
     apollo-link-error "1.1.2"
     apollo-link-ws "1.0.10"
     cross-fetch "3.0.0"
-    graphql-binding "2.3.6"
+    graphql "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
+    graphql-binding "2.3.7"
     graphql-import "0.7.1"
     graphql-tools "4.0.3"
     http-link-dataloader "^0.1.6"
