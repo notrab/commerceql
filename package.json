@@ -13,7 +13,7 @@
   "dependencies": {
     "graphql-yoga": "1.16.9",
     "prisma-binding": "2.2.11",
-    "stripe": "6.19.0",
+    "stripe": "6.20.0",
     "validator": "10.9.0"
   },
   "devDependencies": {
