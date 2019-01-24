@@ -2144,6 +2144,16 @@ graphql-tools@4.0.3, graphql-tools@^4.0.3:
     iterall "^1.1.3"
     uuid "^3.1.0"
 
+graphql-tools@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-4.0.4.tgz#ca08a63454221fdde825fe45fbd315eb2a6d566b"
+  dependencies:
+    apollo-link "^1.2.3"
+    apollo-utilities "^1.0.1"
+    deprecated-decorator "^0.1.6"
+    iterall "^1.1.3"
+    uuid "^3.1.0"
+
 graphql-tools@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-4.0.1.tgz#c995a4e25c2967d108c975e508322d12969c8c0e"
@@ -3954,9 +3964,9 @@ pretty-quick@1.10.0:
     mri "^1.1.0"
     multimatch "^3.0.0"
 
-prisma-binding@2.2.14:
-  version "2.2.14"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.14.tgz#f21ce8e4fb0034c9dec8b39919cec241bbdf74df"
+prisma-binding@2.2.15:
+  version "2.2.15"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.15.tgz#56b3e47e4eea3200c458635c9dbfec8bed27af8f"
   dependencies:
     apollo-link "1.2.6"
     apollo-link-error "1.1.5"
@@ -3965,7 +3975,7 @@ prisma-binding@2.2.14:
     graphql "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
     graphql-binding "2.4.1"
     graphql-import "0.7.1"
-    graphql-tools "4.0.3"
+    graphql-tools "4.0.4"
     http-link-dataloader "^0.1.6"
     jsonwebtoken "8.4.0"
     subscriptions-transport-ws "0.9.15"
