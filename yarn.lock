@@ -3954,9 +3954,9 @@ pretty-quick@1.10.0:
     mri "^1.1.0"
     multimatch "^3.0.0"
 
-prisma-binding@2.2.17:
-  version "2.2.17"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.2.17.tgz#e98092eaaad9ba17e273d9ba5c64b6556d9e7ea1"
+prisma-binding@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.3.0.tgz#0001c7b02bb28c16449b2dbbf2fa931e6250e6c8"
   dependencies:
     apollo-link "1.2.6"
     apollo-link-error "1.1.5"
