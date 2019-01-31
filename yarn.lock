@@ -4943,9 +4943,9 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-stripe@6.22.0:
-  version "6.22.0"
-  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.22.0.tgz#8c1956b04bbbaa736581ff56987feafabd8deff1"
+stripe@6.23.0:
+  version "6.23.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.23.0.tgz#5bd4f217989236e42241278d03c94bb2387f10cc"
   dependencies:
     lodash.isplainobject "^4.0.6"
     qs "~6.5.1"
