@@ -1113,9 +1113,9 @@ cross-fetch@2.2.2:
     node-fetch "2.1.2"
     whatwg-fetch "2.0.4"
 
-cross-fetch@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.0.tgz#fb7fa6906f39c7233aa7ab8de1785e980532b899"
+cross-fetch@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.1.tgz#3f207bbd829a76e9aa2a953348bd1f2a3cf388a7"
   dependencies:
     node-fetch "2.3.0"
     whatwg-fetch "3.0.0"
@@ -3953,14 +3953,14 @@ pretty-quick@1.10.0:
     mri "^1.1.0"
     multimatch "^3.0.0"
 
-prisma-binding@2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.3.1.tgz#8bf2caed8f5c86620490602f14990e70c287bc20"
+prisma-binding@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.3.2.tgz#08935b4eccb6cf25b3099407f741d172175a7af6"
   dependencies:
     apollo-link "1.2.8"
     apollo-link-error "1.1.7"
     apollo-link-ws "1.0.14"
-    cross-fetch "3.0.0"
+    cross-fetch "3.0.1"
     graphql "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0"
     graphql-binding "2.5.0"
     graphql-import "0.7.1"
