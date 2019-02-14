@@ -4233,6 +4233,10 @@ qs@6.5.1, qs@~6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
+qs@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.6.0.tgz#a99c0f69a8d26bf7ef012f871cdabb0aee4424c2"
+
 querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
@@ -4946,12 +4950,12 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-stripe@6.25.0:
-  version "6.25.0"
-  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.25.0.tgz#f98f51c1385b457df03ec7a8fb9013a31e8bb312"
+stripe@6.25.1:
+  version "6.25.1"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.25.1.tgz#b19fce283236107bc52d4a3735d183d1c4957c4c"
   dependencies:
     lodash.isplainobject "^4.0.6"
-    qs "~6.5.1"
+    qs "^6.6.0"
     safe-buffer "^5.1.1"
     uuid "^3.3.2"
 
