@@ -4946,13 +4946,14 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-stripe@6.24.0:
-  version "6.24.0"
-  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.24.0.tgz#b9b6966ecaf127fa4c03bfc8b083c46a61f53f16"
+stripe@6.25.0:
+  version "6.25.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.25.0.tgz#f98f51c1385b457df03ec7a8fb9013a31e8bb312"
   dependencies:
     lodash.isplainobject "^4.0.6"
     qs "~6.5.1"
     safe-buffer "^5.1.1"
+    uuid "^3.3.2"
 
 subscriptions-transport-ws@0.9.15, subscriptions-transport-ws@^0.9.15:
   version "0.9.15"
@@ -5317,7 +5318,7 @@ uuid@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
-uuid@3.3.2:
+uuid@3.3.2, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
