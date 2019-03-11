@@ -4018,9 +4018,9 @@ pretty-quick@1.10.0:
     mri "^1.1.0"
     multimatch "^3.0.0"
 
-prisma-binding@2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.3.5.tgz#5dbda74335a2c09528b9d07028d674e4af1827ae"
+prisma-binding@2.3.6:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/prisma-binding/-/prisma-binding-2.3.6.tgz#0bce78d0f1bbde634d0986b09db33bba2291db92"
   dependencies:
     apollo-link "1.2.9"
     apollo-link-error "1.1.8"
@@ -4032,7 +4032,7 @@ prisma-binding@2.3.5:
     graphql-tools "4.0.4"
     http-link-dataloader "^0.1.6"
     jsonwebtoken "8.5.0"
-    subscriptions-transport-ws "0.9.15"
+    subscriptions-transport-ws "0.9.16"
     yargs "12.0.5"
 
 prisma-cli-core@1.28.3:
@@ -5026,7 +5026,17 @@ stripe@6.26.0:
     safe-buffer "^5.1.1"
     uuid "^3.3.2"
 
-subscriptions-transport-ws@0.9.15, subscriptions-transport-ws@^0.9.15:
+subscriptions-transport-ws@0.9.16:
+  version "0.9.16"
+  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.16.tgz#90a422f0771d9c32069294c08608af2d47f596ec"
+  dependencies:
+    backo2 "^1.0.2"
+    eventemitter3 "^3.1.0"
+    iterall "^1.2.1"
+    symbol-observable "^1.0.4"
+    ws "^5.2.0"
+
+subscriptions-transport-ws@^0.9.15:
   version "0.9.15"
   resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.15.tgz#68a8b7ba0037d8c489fb2f5a102d1494db297d0d"
   dependencies:
