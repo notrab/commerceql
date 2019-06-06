@@ -4017,9 +4017,9 @@ prettier@1.16.4:
   version "1.16.4"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.4.tgz#73e37e73e018ad2db9c76742e2647e21790c9717"
 
-prettier@1.17.1:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.17.1.tgz#ed64b4e93e370cb8a25b9ef7fef3e4fd1c0995db"
+prettier@1.18.0:
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.18.0.tgz#d1701ca9b2941864b52f3262b35946d2c9cd88f0"
 
 pretty-quick@1.11.0:
   version "1.11.0"
