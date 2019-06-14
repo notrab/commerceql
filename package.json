@@ -24,7 +24,7 @@
     "now": "latest",
     "npm-run-all": "4.1.5",
     "prettier": "1.18.2",
-    "pretty-quick": "1.11.0",
+    "pretty-quick": "1.11.1",
     "prisma": "1.34.0"
   }
 }
