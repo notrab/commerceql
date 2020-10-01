@@ -1,6 +1,6 @@
 <p align="center"><img src="https://i.imgur.com/QChDq1R.png" title="Serverless GraphQL eCommerce platform" alt="CommerceQL" /></p>
 
-CommerceQL is a minimalist eCommerce [GraphQL](https://prisma.io) boilerplate.
+CommerceQL is a minimalist & Amazing eCommerce [GraphQL](https://prisma.io) boilerplate.
 
 [Documentation](https://docs.commerceql.com) • [Website](https://commerceql.com) • [Forum](https://forum.moltin.com/c/questions/commerceql)
 
